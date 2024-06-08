@@ -1,0 +1,38 @@
+header{
+  padding: 2em 0;
+}
+
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .middle-section{
+  flex: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+header .middle-section input{
+  background-color: #F0F0F0;
+
+  border: none;
+  border-radius: 25px;
+
+  padding: 0.45em 0.45em 0.45em 3.5em;
+
+  width: 75%;
+
+  position: relative;
+}
+
+header .middle-section img{
+  position: absolute;
+
+  left: 15%;
+}

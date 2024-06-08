@@ -1,0 +1,18 @@
+.stats{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.stats span{
+  font-weight: 900;
+  font-size: 4rem;
+}
+
+.stats p + p{
+  border-left: 1px solid rgba(0, 0, 0, 0.35);
+  padding-left: 1em;
+}
