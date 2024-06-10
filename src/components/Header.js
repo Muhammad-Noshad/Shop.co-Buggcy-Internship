@@ -8,7 +8,7 @@ const Header = () => {
           <h1>shop.co</h1>
         </div>
         
-        <div class="middle-section">
+        <div className="middle-section">
           <input type="text" />
           <img src={require("../images/search.png")} alt="search.png" />
         </div>

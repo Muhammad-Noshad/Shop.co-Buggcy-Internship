@@ -1,0 +1,8 @@
+.rating{
+  display: flex;
+  gap: 3em;
+}
+
+.rating p{
+  font-size: 1.4rem;
+}
