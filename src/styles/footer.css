@@ -1,6 +1,6 @@
 footer{
   background-color: #F2F0F1;
-  padding: 8em 0;
+  padding-top: 6em;
   margin-top: 6em;
 }
 
@@ -23,4 +23,19 @@ footer .icons img + img{
 
 footer .left-section p{
   margin: 1em 0;
+}
+
+footer .bottom-section.container{
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.20);
+  margin-top: 6em;
+  padding: 2em 0;
+}
+
+footer .bottom-section p{
+  flex: 2;
+}
+
+footer .bottom-section .icons{
+  flex: 1.4;
 }

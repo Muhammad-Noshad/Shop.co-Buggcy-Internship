@@ -22,6 +22,16 @@ const Footer = () => {
         <Links title={"Help"} links={["Customer Support", "Delivery Details", "Terms & Conditions", "Privacy Policy"]} />
         <Links title={"FAQ"} links={["Account", "Manage Deliveries", "Orders", "Payments"]} />
       </div>
+      <div className="bottom-section container">
+        <p>Shop.co © 2000-2023, All Rights Reserved</p>
+        <div className="icons">
+          <img src={require("../images/visa.png")} alt="visa.png" />
+          <img src={require("../images/mastercard.png")} alt="mastercard.png" />
+          <img src={require("../images/paypal.png")} alt="paypal.png" />
+          <img src={require("../images/apple-pay.png")} alt="apple-pay.png" />
+          <img src={require("../images/google-pay.png")} alt="google-pay.png" />
+        </div>
+      </div>
     </footer>
   );
 }
