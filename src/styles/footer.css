@@ -13,7 +13,8 @@ footer .container *{
   flex: 1;
 }
 
-footer .left-section .icons{
+footer .left-section .icons,
+footer .bottom-section .icons{
   cursor: pointer;
 }
 
