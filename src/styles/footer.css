@@ -1,0 +1,26 @@
+footer{
+  background-color: #F2F0F1;
+  padding: 8em 0;
+  margin-top: 6em;
+}
+
+footer .container{
+  display: flex;
+  gap: 3em;
+}
+
+footer .container *{
+  flex: 1;
+}
+
+footer .left-section .icons{
+  cursor: pointer;
+}
+
+footer .icons img + img{
+  margin-left: 1em;
+}
+
+footer .left-section p{
+  margin: 1em 0;
+}
