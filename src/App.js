@@ -17,8 +17,9 @@ import ProductDetails from "./components/ProductDetails";
 import ViewProducts from "./components/ViewProducts";
 
 function App() {
-  const { data: products } = useSWR("/products", useFetch);
+  const { data: products, error } = useSWR("/products", useFetch);
 
+  if (error) return <div>Error loading products</div>; if (!products) return <div>Loading...</div>;
   // const setProducts = useProductStore((state) => state.setProducts);
   // setProducts(products);
 
@@ -32,8 +33,8 @@ function App() {
           <Route exact path="/">
             <Hero />
             <Banner />
-            { products && <ProductsOverview className="new-arrivals" heading="New Arrivals" products={[products[0], products[1], products[2], products[3]]} /> }
-            { products && <ProductsOverview className="top-selling" heading="Top Selling" products={[products[4], products[5], products[6], products[7]]} /> }
+            <ProductsOverview className="new-arrivals" heading="New Arrivals" products={products.slice(0, 4)} />
+            <ProductsOverview className="top-selling" heading="Top Selling" products={products.slice(4, 8)} />
             <CustomerReviews />
           </Route>
           <Route path="/product-details/:id">
