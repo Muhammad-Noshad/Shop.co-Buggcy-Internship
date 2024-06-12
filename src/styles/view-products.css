@@ -1,0 +1,34 @@
+.view-products h1{
+  text-align: center;
+  margin-top: 2em;
+}
+
+.view-products .products-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 30rem);
+  gap: 3em;
+}
+
+.view-products .categories{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+  margin: 4em 0;
+}
+
+.view-products .categories button{
+  border: none;
+  border-radius: 25px;
+  padding: 1em 0em;
+  width: 18rem;
+  text-transform: capitalize;
+  font-size: 1.45rem;
+  transition: all ease-in-out 300ms;
+}
+
+.selected{
+  background-color: #000000;
+  color: #FFFFFF;
+}

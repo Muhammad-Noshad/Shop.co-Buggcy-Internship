@@ -2,7 +2,7 @@ import "../styles/counter.css";
 
 import { useState } from "react";
 
-const Counter = () => {
+const Counter = (props) => {
   const [ count, setCount ] = useState(1);
 
   function incCount(){
@@ -17,7 +17,7 @@ const Counter = () => {
   return (
     <div className="counter">
       <button className="inc-btn" style={{"padding": "0.25rem 2rem"}} onClick={ incCount } > + </button>
-      <p>{ count }</p>
+      <p ref={ props.quantity }>{ count }</p>
       <button className="dec-btn" style={{"padding": "0.25rem 2rem"}} onClick={ decCount } > - </button>
     </div>
   );

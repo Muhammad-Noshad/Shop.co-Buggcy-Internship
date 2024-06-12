@@ -22,7 +22,9 @@ const ProductsOverview = (props) => {
           <ProductCard product={ props.products[3] }/>
         </Link>
       </div>
-      <button>View all</button>
+      <Link to={"/view-products"}>
+        <button>View all</button>
+      </Link>
     </div>
   );
 }

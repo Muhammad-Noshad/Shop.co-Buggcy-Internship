@@ -14,12 +14,13 @@ import ProductsOverview from "./components/ProductsOverview";
 import CustomerReviews from "./components/CustomerReviews";
 import Footer from "./components/Footer";
 import ProductDetails from "./components/ProductDetails";
+import ViewProducts from "./components/ViewProducts";
 
 function App() {
   const { data: products } = useSWR("/products", useFetch);
 
-  const setProducts = useProductStore((state) => state.setProducts);
-  setProducts(products);
+  // const setProducts = useProductStore((state) => state.setProducts);
+  // setProducts(products);
 
   console.log(products);
 
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/product-details/:id">
             <ProductDetails products={products} />
+          </Route>
+          <Route path="/view-products">
+            <ViewProducts products={products} />
           </Route>
         </Switch>
         <Footer />
