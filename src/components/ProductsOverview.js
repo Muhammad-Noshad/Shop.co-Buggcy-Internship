@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "../styles/products-overview.css"
 
 import ProductCard from "./ProductCard";
@@ -7,10 +9,18 @@ const ProductsOverview = (props) => {
     <div className={ props.className + " container"}>
       <h1>{ props.heading }</h1>
       <div className="products">
-        <ProductCard product={ props.products[0] }/>
-        <ProductCard product={ props.products[1] }/>
-        <ProductCard product={ props.products[2] }/>
-        <ProductCard product={ props.products[3] }/>
+        <Link to={`/product-details/${props.products[0].id}`}>
+          <ProductCard product={ props.products[0] }/>
+        </Link>
+        <Link to={`/product-details/${props.products[1].id}`}>
+          <ProductCard product={ props.products[1] }/>
+        </Link>
+        <Link to={`/product-details/${props.products[2].id}`}>
+          <ProductCard product={ props.products[2] }/>
+        </Link>
+        <Link to={`/product-details/${props.products[3].id}`}>
+          <ProductCard product={ props.products[3] }/>
+        </Link>
       </div>
       <button>View all</button>
     </div>

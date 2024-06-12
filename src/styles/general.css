@@ -29,6 +29,7 @@ button, a{
 
 a{
   text-decoration: none;
+  color: inherit;
 }
 
 img{

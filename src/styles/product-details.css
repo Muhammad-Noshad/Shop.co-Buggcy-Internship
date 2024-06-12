@@ -1,0 +1,27 @@
+.product-details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+  margin-top: 2em;
+}
+
+.product-details .left-section{
+  max-width: 20%;
+}
+
+.product-details .right-section{
+  max-width: 50%;
+}
+
+.product-details .right-section button{
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 0.5em 3em;
+  border-radius: 25px;
+  border: none;
+}
+
+.product-details .right-section *{
+  margin-top: 0.5em;
+}

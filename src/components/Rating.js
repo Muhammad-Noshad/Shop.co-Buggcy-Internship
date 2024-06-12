@@ -5,6 +5,7 @@ import halfFilledStar from "../images/half-filled-star.png";
 
 const Rating = (props) => {
   let stars = null;
+  let counter = 0;
   
   calculateStars();
 
@@ -25,7 +26,7 @@ const Rating = (props) => {
     <div className="rating">
     <div className="stars">
       {stars.map((star) => {
-        return <img src={star} alt="star.png" />
+        return <img key={counter++}  src={star} alt="star.png" />
       })}
     </div>
     <p>{ props.rating + "/5" }</p>
