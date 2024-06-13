@@ -25,13 +25,10 @@ const ProductDetails = (props) => {
 
     [ product ] = [...product];
   }
-
   function handleClick(){
-    let selectedProduct = product;
-    selectedProduct.quantity = parseInt(quantity.current.textContent);
-    addToCart(selectedProduct);
+    addToCart({ ...product, quantity: parseInt(quantity.current.textContent) });
   }
-
+    
   console.log(cart);
 
   return (
@@ -44,7 +41,7 @@ const ProductDetails = (props) => {
         <Rating rating={ product && product.rating.rate} />
         <p>{ product && product.description }</p>
         <Counter quantity={ quantity }/>
-        <button onClick={ handleClick }>Add to Cart</button>
+        <button className="add-to-cart-btn" onClick={ handleClick }>Add to Cart</button>
       </div>
     </div>
   );

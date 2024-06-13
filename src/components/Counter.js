@@ -16,9 +16,9 @@ const Counter = (props) => {
 
   return (
     <div className="counter">
-      <button className="inc-btn" style={{"padding": "0.25rem 2rem"}} onClick={ incCount } > + </button>
+      <button className="inc-btn" onClick={ incCount } > + </button>
       <p ref={ props.quantity }>{ count }</p>
-      <button className="dec-btn" style={{"padding": "0.25rem 2rem"}} onClick={ decCount } > - </button>
+      <button className="dec-btn" onClick={ decCount } > - </button>
     </div>
   );
 }

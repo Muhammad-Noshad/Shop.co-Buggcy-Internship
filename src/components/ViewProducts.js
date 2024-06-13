@@ -4,6 +4,8 @@ import ProductCard from "./ProductCard";
 import { useEffect, useRef, useState } from "react";
 
 const ViewProducts = (props) => {
+  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+
   const categoriesElem = useRef();
   const [filterBy, setFilterBy] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -16,7 +18,8 @@ const ViewProducts = (props) => {
         if (buttons[index].classList.contains('selected')) {
           buttons[index].classList.remove('selected');
           setFilterBy(null);
-        } else {
+        } 
+        else {
           Array.from(buttons).forEach((button, idx) => {
             if (idx === index) {
               button.classList.add('selected');

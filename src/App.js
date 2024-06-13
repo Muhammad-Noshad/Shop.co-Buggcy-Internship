@@ -9,19 +9,17 @@ import Header from './components/Header';
 import Hero from "./components/Hero";
 import Banner from "./components/Banner";
 import Stats from "./components/Stats";
-import useProductStore from "./hooks/productStore";
 import ProductsOverview from "./components/ProductsOverview";
 import CustomerReviews from "./components/CustomerReviews";
 import Footer from "./components/Footer";
 import ProductDetails from "./components/ProductDetails";
 import ViewProducts from "./components/ViewProducts";
+import ViewCart from "./components/ViewCart";
 
 function App() {
-  const { data: products, error } = useSWR("/products", useFetch);
+  const { data: products } = useSWR("/products", useFetch);
 
-  if (error) return <div>Error loading products</div>; if (!products) return <div>Loading...</div>;
-  // const setProducts = useProductStore((state) => state.setProducts);
-  // setProducts(products);
+  if (!products) return <div>Loading...</div>;
 
   console.log(products);
 
@@ -42,6 +40,9 @@ function App() {
           </Route>
           <Route path="/view-products">
             <ViewProducts products={products} />
+          </Route>
+          <Route path="/view-cart">
+            <ViewCart products={products} />
           </Route>
         </Switch>
         <Footer />
