@@ -19,7 +19,7 @@ const CartCard = (props) => {
         <Rating rating={props.product.rating.rate}/>
         <p className="price">${props.product.price}</p>
         <div className="util-section">
-          <Counter quantity={ quantity } />
+          <Counter quantity={ quantity } q={ props.product.quantity } />
           <div className="delete">
             <img src={require("../images/delete.png")} alt="delete.png" />
           </div>

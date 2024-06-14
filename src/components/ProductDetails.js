@@ -39,6 +39,7 @@ const ProductDetails = (props) => {
       <div className="right-section">
         <h1>{ product && product.title }</h1>
         <Rating rating={ product && product.rating.rate} />
+        <p style={{"fontWeight": "700"}}>${ product && product.price }</p>
         <p>{ product && product.description }</p>
         <Counter quantity={ quantity }/>
         <button className="add-to-cart-btn" onClick={ handleClick }>Add to Cart</button>
