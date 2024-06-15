@@ -65,7 +65,7 @@ const ViewProducts = (props) => {
       </div>
 
       <div className="products-grid">
-        {filteredProducts &&
+        {
           filteredProducts.map((product) => (
             <Link key={product.id} to={`/product-details/${product.id}`}>
               <ProductCard product={product} />

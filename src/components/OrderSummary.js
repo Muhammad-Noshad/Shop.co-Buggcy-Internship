@@ -5,12 +5,12 @@ import useCartStore from "../hooks/cartStore";
 
 const OrderSummary = () => {
   const [items, setItems] = useState(0);
-  const [total, setTotal] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
-  const [tax, setTax] = useState(0);
-  const cart = useCartStore((state) => state.cart);
   const shipping = 15;
   const taxPerc = 10; 
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
+  const cart = useCartStore((state) => state.cart);
 
   console.log(cart);
 

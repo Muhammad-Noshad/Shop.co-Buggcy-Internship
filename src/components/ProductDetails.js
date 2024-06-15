@@ -12,18 +12,15 @@ const ProductDetails = (props) => {
 
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
+
   const [count, setCount] = useState(1);
   const { id } = useParams();
-  let product;
+  
+  let product = props.products.filter((product) => {
+    return product.id === parseInt(id);
+  });
 
-  if(props.products)
-  {
-    product = props.products.filter((product) => {
-      return product.id === parseInt(id);
-    });
-
-    [ product ] = [...product];
-  }
+  [ product ] = [...product];
 
   function handleClick(){
     addToCart({ ...product, quantity: count });
@@ -34,13 +31,13 @@ const ProductDetails = (props) => {
   return (
     <div className="product-details container">
       <div className="left-section">
-        <img src={product && product.image} alt="product.png" />
+        <img src={ product.image } alt="product.png" />
       </div>
       <div className="right-section">
-        <h1>{ product && product.title }</h1>
-        <Rating rating={ product && product.rating.rate} />
-        <p style={{"fontWeight": "700"}}>${ product && product.price }</p>
-        <p>{ product && product.description }</p>
+        <h1>{ product.title }</h1>
+        <Rating rating={ product.rating.rate} />
+        <p style={{"fontWeight": "800","fontSize": "2.1rem"}}>${ product.price }</p>
+        <p>{ product.description }</p>
         <Counter count={ count } setCount= { setCount }/>
         <button className="add-to-cart-btn" onClick={ handleClick }>Add to Cart</button>
       </div>

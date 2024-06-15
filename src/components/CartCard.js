@@ -4,12 +4,13 @@ import Rating from "./Rating";
 import Counter from "./Counter";
 import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore";
-// $435.84000000000003
+
 const CartCard = (props) => {
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
   const [count, setCount] = useState(props.product.quantity);
-  const updateQuantity = useCartStore((state) => state.updateQuantity);
+  
   const cart = useCartStore((state) => state.cart);
+  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const updateQuantity = useCartStore((state) => state.updateQuantity);
 
   useEffect(() => {
     updateQuantity(props.product, count);
