@@ -3,8 +3,9 @@ import "../styles/view-cart.css";
 import useCartStore from "../hooks/cartStore";
 import CartCard from "./CartCard";
 import OrderSummary from "./OrderSummary";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const ViewCart = (props) => {
+const ViewCart = () => {
   const cart = useCartStore((state) => state.cart);
   
   return (
@@ -15,7 +16,9 @@ const ViewCart = (props) => {
         <div className="cart-items">
           {
             cart.map((item) => {
-              return <CartCard key={item.id}  product={item}/>
+              return (   
+                <CartCard product={item}/>
+              )
             })
           }
         </div>

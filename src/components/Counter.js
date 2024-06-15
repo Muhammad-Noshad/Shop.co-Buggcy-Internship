@@ -1,23 +1,19 @@
 import "../styles/counter.css";
 
-import { useState } from "react";
-
 const Counter = (props) => {
-  const [ count, setCount ] = useState(props.q || 1);
-
   function incCount(){
-    setCount(count + 1);
+    props.setCount(props.count + 1);
   }
 
   function decCount(){
-    if(count > 1)
-      setCount(count - 1);
+    if(props.count > 1)
+      props.setCount(props.count - 1);
   }
 
   return (
     <div className="counter">
       <button className="inc-btn" onClick={ incCount } > + </button>
-      <p ref={ props.quantity }>{ count }</p>
+      <p>{ props.count }</p>
       <button className="dec-btn" onClick={ decCount } > - </button>
     </div>
   );

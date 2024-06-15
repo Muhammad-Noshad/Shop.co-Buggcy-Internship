@@ -1,7 +1,7 @@
 import "../styles/product-details.css";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore"
 import Counter from "./Counter";
 
@@ -12,8 +12,7 @@ const ProductDetails = (props) => {
 
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
-  const quantity = useRef();
-
+  const [count, setCount] = useState(1);
   const { id } = useParams();
   let product;
 
@@ -25,8 +24,9 @@ const ProductDetails = (props) => {
 
     [ product ] = [...product];
   }
+
   function handleClick(){
-    addToCart({ ...product, quantity: parseInt(quantity.current.textContent) });
+    addToCart({ ...product, quantity: count });
   }
     
   console.log(cart);
@@ -41,7 +41,7 @@ const ProductDetails = (props) => {
         <Rating rating={ product && product.rating.rate} />
         <p style={{"fontWeight": "700"}}>${ product && product.price }</p>
         <p>{ product && product.description }</p>
-        <Counter quantity={ quantity }/>
+        <Counter count={ count } setCount= { setCount }/>
         <button className="add-to-cart-btn" onClick={ handleClick }>Add to Cart</button>
       </div>
     </div>

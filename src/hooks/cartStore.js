@@ -28,6 +28,26 @@ const useCartStore = create((set) => ({
       }
     }
   }),
+
+  removeFromCart: (product) => set((state) => {
+    return{
+      cart: state.cart.filter((prd) => {
+        return prd !== product;
+      }) 
+    }
+  }),
+
+  updateQuantity: (product, quantity) => set((state) => {
+    return{
+      cart: state.cart.map((prd) => {
+        if(prd.id === product.id){
+          prd.quantity = quantity;
+        }
+
+        return prd;
+      })
+    }
+  })
 }))
 
 

@@ -10,7 +10,7 @@ const ProductCard = (props) => {
       </div>
       <p className="title">{ props.product.title }</p>
       <Rating rating={ props.product.rating.rate }/>
-      <p className="price">{ '$' + props.product.price }</p>
+      <p className="price">{ '$' + props.product.price.toFixed(2) }</p>
     </div>
   );
 }
