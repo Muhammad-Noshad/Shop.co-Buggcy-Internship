@@ -1,9 +1,10 @@
 import "../styles/product-details.css";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useCartStore from "../hooks/cartStore"
 import Counter from "./Counter";
+import Message from "./Message";
 
 import Rating from "./Rating";
 
@@ -15,6 +16,9 @@ const ProductDetails = (props) => {
 
   const [count, setCount] = useState(1);
   const { id } = useParams();
+
+  const msg = useRef();
+  let timeoutId;
   
   let product = props.products.filter((product) => {
     return product.id === parseInt(id);
@@ -24,12 +28,26 @@ const ProductDetails = (props) => {
 
   function handleClick(){
     addToCart({ ...product, quantity: count });
+    showMessage("green");
+  }
+
+  function showMessage(){
+    if(timeoutId){
+      clearTimeout(timeoutId);
+    }
+
+    msg.current.style.top = "1%";
+
+    timeoutId = setTimeout(() => {
+      msg.current.style.top = "-50%";
+    }, 2000);
   }
     
   console.log(cart);
 
   return (
     <div className="product-details container">
+      <Message message={"Product added to cart successfully!"} color={"green"} msg={ msg } />
       <div className="left-section">
         <img src={ product.image } alt="product.png" />
       </div>

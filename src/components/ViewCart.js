@@ -3,13 +3,29 @@ import "../styles/view-cart.css";
 import useCartStore from "../hooks/cartStore";
 import CartCard from "./CartCard";
 import OrderSummary from "./OrderSummary";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Message from "./Message";
+import { useRef } from "react";
 
 const ViewCart = () => {
   const cart = useCartStore((state) => state.cart);
+  const msg = useRef();
+  let timeoutId;
+
+  function showMessage(){
+    if(timeoutId){
+      clearTimeout(timeoutId);
+    }
+
+    msg.current.style.top = "1%";
+
+    timeoutId = setTimeout(() => {
+      msg.current.style.top = "-50%";
+    }, 2000);
+  }
   
   return (
     <div className="view-cart container">
+      <Message msg={ msg } message={ "Product removed successfully!" } color={ "green" } />
       <h1>Your Cart</h1>
       <div className="wrapper">
         <OrderSummary />
@@ -17,7 +33,7 @@ const ViewCart = () => {
           {
             cart.map((item) => {
               return (   
-                <CartCard product={item}/>
+                <CartCard key={item.id} product={item} showMessage={showMessage} />
               )
             })
           }

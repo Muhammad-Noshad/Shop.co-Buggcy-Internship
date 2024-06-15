@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, 30rem);
   gap: 3em;
+  justify-content: center;
 }
 
 .view-products .categories{

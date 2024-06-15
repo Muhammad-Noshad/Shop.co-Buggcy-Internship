@@ -30,7 +30,10 @@ const CartCard = (props) => {
         <p className="price">${props.product.price.toFixed(2)}</p>
         <div className="util-section">
           <Counter count={ count } setCount={ setCount } />
-          <div className="delete" onClick={() => { removeFromCart(props.product) }}>
+          <div className="delete" onClick={() => { 
+            removeFromCart(props.product);
+            props.showMessage();
+             }}>
             <img src={require("../images/delete.png")} alt="delete.png" />
           </div>
         </div>
