@@ -5,8 +5,8 @@ const Links = (props) => {
     <div className="links">
       <p className="title">{ props.title }</p>
       {
-        props.links.map((link) => {
-          return <p>{ link }</p>
+        props.links.map((link, index) => {
+          return <p key={index}>{ link }</p>
         })
       }
     </div>
