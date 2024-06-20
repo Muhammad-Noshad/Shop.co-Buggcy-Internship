@@ -2,6 +2,7 @@ import "../styles/rating.css";
 
 import filledStar from "../images/filled-star.png";
 import halfFilledStar from "../images/half-filled-star.png";
+import { memo } from "react";
 
 const Rating = (props) => {
   let stars = null;
@@ -34,4 +35,4 @@ const Rating = (props) => {
   );
 }
  
-export default Rating;
+export default memo(Rating);

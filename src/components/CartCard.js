@@ -2,7 +2,7 @@ import "../styles/cart-card.css";
 
 import Rating from "./Rating";
 import Counter from "./Counter";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, memo } from "react";
 import useCartStore from "../hooks/cartStore";
 
 const CartCard = (props) => {
