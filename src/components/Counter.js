@@ -1,20 +1,20 @@
 import "../styles/counter.css";
 
+function incCount(count, setCount){
+  setCount(count + 1);
+}
+
+function decCount(count, setCount){
+  if(count > 1)
+    setCount(count - 1);
+}
+
 const Counter = (props) => {
-  function incCount(){
-    props.setCount(props.count + 1);
-  }
-
-  function decCount(){
-    if(props.count > 1)
-      props.setCount(props.count - 1);
-  }
-
   return (
     <div className="counter">
-      <button className="inc-btn" onClick={ incCount } > + </button>
+      <button className="inc-btn" onClick={ () => { incCount(props.count, props.setCount )} } > + </button>
       <p>{ props.count }</p>
-      <button className="dec-btn" onClick={ decCount } > - </button>
+      <button className="dec-btn" onClick={ () => { decCount(props.count, props.setCount )} } > - </button>
     </div>
   );
 }
