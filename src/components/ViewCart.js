@@ -4,7 +4,7 @@ import useCartStore from "../hooks/cartStore";
 import CartCard from "./CartCard";
 import OrderSummary from "./OrderSummary";
 import Message from "./Message";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 const ViewCart = () => {
   const cart = useCartStore((state) => state.cart);
@@ -22,6 +22,8 @@ const ViewCart = () => {
       msg.current.style.top = "-50%";
     }, 2000);
   }
+
+  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
   
   return (
     <div className="view-cart container">

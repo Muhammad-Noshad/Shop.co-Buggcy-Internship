@@ -47,10 +47,14 @@ h1{
   font-weight: 900;
 }
 
-p, button, input{
+p, button, input, label{
   font-family: 'Satoshi';
   font-size: 1.7rem;
   font-weight: 400;
+}
+
+input[type=date]:invalid{
+  color: grey;
 }
 
 .container{

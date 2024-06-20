@@ -16,6 +16,7 @@ import ProductDetails from "./components/ProductDetails";
 import ViewProducts from "./components/ViewProducts";
 import ViewCart from "./components/ViewCart";
 import Loading from "./components/Loading";
+import Checkout from "./components/Checkout";
 
 function App() {
   const { data: products } = useSWR("/products", useFetch);
@@ -44,7 +45,10 @@ function App() {
             <ProductDetails products={products} />
           </Route>
           <Route path="/view-cart">
-            <ViewCart products={products} />
+            <ViewCart />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
           </Route>
         </Switch>
         <Footer />

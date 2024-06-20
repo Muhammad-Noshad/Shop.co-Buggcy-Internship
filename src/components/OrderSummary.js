@@ -2,6 +2,7 @@ import "../styles/order-summary.css";
 
 import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore";
+import { Link } from "react-router-dom";
 
 const OrderSummary = () => {
   const [items, setItems] = useState(0);
@@ -11,8 +12,6 @@ const OrderSummary = () => {
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
   const cart = useCartStore((state) => state.cart);
-
-  console.log(cart);
 
   useEffect(() => {
     setItems(cart.length);
@@ -56,7 +55,9 @@ const OrderSummary = () => {
         <p>{"Total: " }</p>
         <p className="total">{ "$" + total.toFixed(2) }</p>
       </div>
-      <button>Checkout</button>
+      <Link to="/checkout">
+        <button>Checkout</button>
+      </Link>
     </div>
   );
 }

@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const history = useHistory();
   const key = useLocation().pathname.split('/');
 
   useEffect(() => {
-    setSearch(key[key.length - 1]);
+    if(key.length === 3)
+      setSearch(key[key.length - 1]);
   }, [])
 
   function handleClick(){
