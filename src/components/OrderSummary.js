@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore";
 import { Link } from "react-router-dom";
 
-const OrderSummary = () => {
+const OrderSummary = (props) => {
   const [items, setItems] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
   const shipping = 15;
@@ -55,8 +55,8 @@ const OrderSummary = () => {
         <p>{"Total: " }</p>
         <p className="total">{ "$" + total.toFixed(2) }</p>
       </div>
-      <Link to="/checkout">
-        <button>Checkout</button>
+      <Link to={ props.btnPath }>
+        <button>{ props.btnText }</button>
       </Link>
     </div>
   );

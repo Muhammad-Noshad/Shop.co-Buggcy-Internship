@@ -8,7 +8,7 @@ const Checkout = () => {
   return (  
     <div className="checkout container">
       <div className="order">
-        <OrderSummary />
+        <OrderSummary btnText={"Modify Order"} btnPath={"/view-cart"} />
       </div>
       <div className="checkout-form">
         <h1>Checkout</h1>
@@ -48,7 +48,7 @@ const Checkout = () => {
           </div>
           <div className="field">
             <label>Expiry Date:</label>
-            <input type="date" class="date" required />
+            <input type="date" required />
           </div>
         </form>
         <button>Place Order</button>

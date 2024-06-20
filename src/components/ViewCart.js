@@ -32,7 +32,7 @@ const ViewCart = () => {
       <Message msg={ msg } message={ "Product removed successfully!" } color={ "green" } />
       <h1>Your Cart</h1>
       <div className="wrapper">
-        <OrderSummary />
+        <OrderSummary btnText={"Checkout"} btnPath={"/checkout"} />
         <div className="cart-items">
           {
             cart.map((item) => {
