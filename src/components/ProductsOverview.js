@@ -19,7 +19,7 @@ const ProductsOverview = (props) => {
           })
         }
       </div>
-      <Link to={"/view-products"}>
+      <Link to={"/view-products/"}>
         <button>View all</button>
       </Link>
     </div>

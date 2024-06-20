@@ -1,4 +1,5 @@
 import "../styles/hero.css"
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -7,7 +8,9 @@ const Hero = () => {
         <div className="left-section">
           <h1>Find clothes that matches your style</h1>
           <p>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-          <button>Shop Now</button>
+          <Link to="/view-products">
+            <button>Shop Now</button>
+          </Link>
         </div>
 
         <div className="right-section">

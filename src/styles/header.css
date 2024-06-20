@@ -40,5 +40,6 @@ header .middle-section input{
 header .middle-section img{
   position: absolute;
 
-  left: 15%;
+  left: 14.5%;
+  top: 0.6em;
 }

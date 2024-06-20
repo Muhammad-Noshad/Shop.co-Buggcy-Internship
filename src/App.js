@@ -37,11 +37,11 @@ function App() {
             <ProductsOverview className="top-selling" heading="Top Selling" products={products.slice(4, 8)} />
             <CustomerReviews />
           </Route>
+          <Route path="/view-products/:key?">
+            <ViewProducts products={products} />
+          </Route>
           <Route path="/product-details/:id">
             <ProductDetails products={products} />
-          </Route>
-          <Route path="/view-products">
-            <ViewProducts products={products} />
           </Route>
           <Route path="/view-cart">
             <ViewCart products={products} />
