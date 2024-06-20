@@ -42,8 +42,12 @@ const ProductDetails = (props) => {
       msg.current.style.top = "-50%";
     }, 2000);
   }
-    
+  
   console.log(cart);
+  
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
 
   return (
     <div className="product-details container">
@@ -54,7 +58,7 @@ const ProductDetails = (props) => {
       <div className="right-section">
         <h1>{ product.title }</h1>
         <Rating rating={ product.rating.rate} />
-        <p style={{"fontWeight": "800","fontSize": "2.1rem"}}>${ product.price }</p>
+        <p style={{"fontWeight": "800","fontSize": "2.1rem"}}>${ product.price.toFixed(2) }</p>
         <p>{ product.description }</p>
         <Counter count={ count } setCount= { setCount }/>
         <button className="add-to-cart-btn" onClick={ handleClick }>Add to Cart</button>

@@ -8,14 +8,17 @@ import useCartStore from "../hooks/cartStore";
 const CartCard = (props) => {
   const [count, setCount] = useState(props.product.quantity);
   
-  const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
+  const cart = useCartStore((state) => state.cart);
 
   useEffect(() => {
     updateQuantity(props.product, count);
-    console.log(cart);
   }, [count]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
 
   return (
     <div className="cart-card">

@@ -17,14 +17,22 @@ import ViewProducts from "./components/ViewProducts";
 import ViewCart from "./components/ViewCart";
 import Loading from "./components/Loading";
 import Checkout from "./components/Checkout";
+import useCartStore from "./hooks/cartStore";
+import { useEffect } from "react";
 
 function App() {
+  const setCart = useCartStore((state) => state.setCart);
   const { data: products } = useSWR("/products", useFetch);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem('cart')) || []);
+  }, [])
 
   if (!products) 
     return (<Loading />);
 
   console.log(products);
+
   
   return (
     <div className="App">

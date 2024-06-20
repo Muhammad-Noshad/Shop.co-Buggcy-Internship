@@ -23,7 +23,9 @@ const ViewCart = () => {
     }, 2000);
   }
 
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant"});
+  }, []);
   
   return (
     <div className="view-cart container">

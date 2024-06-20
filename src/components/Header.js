@@ -8,7 +8,7 @@ const Header = () => {
   const key = useLocation().pathname.split('/');
 
   useEffect(() => {
-    if(key.length === 3)
+    if(key.length === 3 && isNaN(key[key.length - 1]))
       setSearch(key[key.length - 1]);
   }, [])
 
