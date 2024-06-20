@@ -12,61 +12,7 @@
   flex: 1;
 }
 
-.checkout .checkout-form{
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
-
-  border-radius: 25px;
-  padding: 2em;
-  flex: 1.5;
-}
-
 .checkout h1{
   text-align: center;
   margin-bottom: 1em;
-}
-
-.checkout .title{
-  font-weight: 700;
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-.field + .title{  
-  margin-top: 3em;
-}
-
-.checkout .field{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  padding: 0 2em;
-}
-
-.checkout .field + .field{
-  margin-top: 1.5em;
-}
-
-.checkout input{
-  border: 0.5px solid rgba(0, 0, 0, 0.25);
-  border-radius: 1em;
-  padding: 0.45em 1em;
-  flex: 2;
-}
-
-.checkout label{
-  margin-right: 1em;
-  flex: 0.5;
-  display: block;
-}
-
-.checkout button{
-  background-color: #000000;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 25px;
-  padding: 0.5em 4em;
-  margin-top: 2em;
-  margin-left: 50%;
-  transform: translateX(-50%);
 }

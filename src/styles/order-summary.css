@@ -51,5 +51,7 @@
   border-radius: 25px;
   padding: 0.5em 4em;
   margin-top: 2em;
+  margin-left: 50%;
+  transform: translateX(-50%);
   text-wrap: nowrap;
 }
