@@ -16,9 +16,7 @@ const ProductDetails = (props) => {
 
   const [count, setCount] = useState(1);
   const { id } = useParams();
-
-  const msg = useRef();
-  let timeoutId;
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
   
   let product = props.products.filter((product) => {
     return product.id === parseInt(id);
@@ -28,21 +26,10 @@ const ProductDetails = (props) => {
 
   function handleClick(){
     addToCart({ ...product, quantity: count });
-    showMessage("green");
+    setIsAddedToCart(true);
+    setTimeout(() => {setIsAddedToCart(false)}, 1200);
   }
 
-  function showMessage(){
-    if(timeoutId){
-      clearTimeout(timeoutId);
-    }
-
-    msg.current.style.top = "1%";
-
-    timeoutId = setTimeout(() => {
-      msg.current.style.top = "-50%";
-    }, 2000);
-  }
-  
   console.log(cart);
   
   useEffect(() => {
@@ -51,7 +38,9 @@ const ProductDetails = (props) => {
 
   return (
     <div className="product-details container">
-      <Message message={"Product added to cart successfully!"} color={"green"} msg={ msg } />
+      {
+        isAddedToCart && <Message message={"Product added to cart successfully!"} color={"green"} />
+      }
       <div className="left-section">
         <img src={ product.image } alt="product.png" />
       </div>

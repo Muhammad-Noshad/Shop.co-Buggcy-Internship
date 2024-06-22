@@ -1,17 +1,22 @@
 import "../styles/checkout.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import OrderSummary from './OrderSummary'
 import CheckoutForm from "./CheckoutForm";
 
 const Checkout = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
 
   return (  
     <div className="checkout container">
-      <div className="order">
-        <OrderSummary btnText={"Modify Order"} btnPath={"/view-cart"} />
-      </div>
-      <CheckoutForm />
+      {
+        isSubmitted ||
+        <div className="order">
+          <OrderSummary btnText={"Modify Order"} btnPath={"/view-cart"} />
+        </div>
+      }
+      <CheckoutForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
     </div>
   );
 }

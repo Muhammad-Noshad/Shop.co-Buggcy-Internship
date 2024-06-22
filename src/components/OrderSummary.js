@@ -56,7 +56,7 @@ const OrderSummary = (props) => {
         <p className="total">{ "$" + total.toFixed(2) }</p>
       </div>
       <Link to={ props.btnPath }>
-        <button>{ props.btnText }</button>
+        <button disabled={!items} className={ items? "":"disabled" }>{ props.btnText }</button>
       </Link>
     </div>
   );

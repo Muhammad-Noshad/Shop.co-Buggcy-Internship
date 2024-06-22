@@ -2,7 +2,7 @@ import "../styles/cart-card.css";
 
 import Rating from "./Rating";
 import Counter from "./Counter";
-import { useEffect, useState, useMemo, memo } from "react";
+import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore";
 
 const CartCard = (props) => {
@@ -10,7 +10,19 @@ const CartCard = (props) => {
   
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
-  const cart = useCartStore((state) => state.cart);
+  let cart = useCartStore((state) => state.cart);
+
+  function removeProduct(){
+    removeFromCart(props.product);
+    
+    props.setIsProductRemoved(true);
+    setTimeout(() => {
+      props.setIsProductRemoved(false);
+    }, 1200);
+    
+    cart = useCartStore.getState().cart;
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 
   useEffect(() => {
     updateQuantity(props.product, count);
@@ -33,10 +45,7 @@ const CartCard = (props) => {
         <p className="price">${props.product.price.toFixed(2)}</p>
         <div className="util-section">
           <Counter count={ count } setCount={ setCount } />
-          <div className="delete" onClick={() => { 
-            removeFromCart(props.product);
-            props.showMessage();
-             }}>
+          <div className="delete" onClick={removeProduct}>
             <img src={require("../images/delete.png")} alt="delete.png" />
           </div>
         </div>

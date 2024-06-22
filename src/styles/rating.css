@@ -1,5 +1,8 @@
 .rating{
   display: flex;
+  flex-shrink: none;
+  border: 1px solid;
+  width: 23rem;
   gap: 3em;
 }
 

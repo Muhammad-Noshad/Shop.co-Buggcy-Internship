@@ -4,6 +4,7 @@
   border-radius: 25px;
   padding: 2em;
   flex: 1.5;
+  max-width: 1000px;
 }
 
 .checkout-form .title{
@@ -52,4 +53,16 @@
   margin-top: 2em;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+
+input.input-error{
+  border: 2px solid red;
+}
+
+.error-message{
+  color: red;
+  font-size: 1.45rem;
+  text-transform: capitalize;
+  margin-left: 26%;
+  margin-bottom: .5em;
 }

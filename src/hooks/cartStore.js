@@ -30,13 +30,9 @@ const useCartStore = create((set) => ({
     }
   }),
 
-  removeFromCart: (product) => set((state) => {
-    return{
-      cart: state.cart.filter((prd) => {
-        return prd !== product;
-      }) 
-    }
-  }),
+  removeFromCart: (product) => set((state) => ({
+    cart: state.cart.filter((prd) => prd.id !== product.id),
+  })),
 
   updateQuantity: (product, quantity) => set((state) => {
     return{
@@ -47,6 +43,15 @@ const useCartStore = create((set) => ({
 
         return prd;
       })
+    }
+  }),
+
+  clearCart: () => set((state) => {
+    state.cart = [];
+    localStorage.clear();
+
+    return{
+      cart: []
     }
   }),
 }))
