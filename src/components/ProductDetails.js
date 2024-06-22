@@ -1,16 +1,13 @@
 import "../styles/product-details.css";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import useCartStore from "../hooks/cartStore"
 import Counter from "./Counter";
 import Message from "./Message";
-
 import Rating from "./Rating";
 
 const ProductDetails = (props) => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
-
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -18,20 +15,18 @@ const ProductDetails = (props) => {
   const { id } = useParams();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   
-  let product = props.products.filter((product) => {
-    return product.id === parseInt(id);
-  });
+  const product = useMemo(() => {
+    return props.products.find((product) => product.id === parseInt(id));
+  }, [props.products, id])
 
-  [ product ] = [...product];
-
-  function handleClick(){
+  const handleClick = useCallback(() => {
     addToCart({ ...product, quantity: count });
     setIsAddedToCart(true);
     setTimeout(() => {setIsAddedToCart(false)}, 1200);
-  }
-
-  console.log(cart);
+  }, [product, count, addToCart, setIsAddedToCart])
   
+  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart])

@@ -1,12 +1,12 @@
 import "../styles/counter.css";
 
 function incCount(count, setCount){
-  setCount(count + 1);
+  setCount((count) => count + 1);
 }
 
 function decCount(count, setCount){
   if(count > 1)
-    setCount(count - 1);
+    setCount((count) => count - 1);
 }
 
 const Counter = (props) => {

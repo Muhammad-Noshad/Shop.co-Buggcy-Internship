@@ -2,26 +2,10 @@ import "../styles/rating.css";
 
 import filledStar from "../images/filled-star.png";
 import halfFilledStar from "../images/half-filled-star.png";
-import { memo } from "react";
 
 const Rating = (props) => {
-  let stars = null;
+  let stars = calculateStars(props.rating);
   let counter = 0;
-  
-  calculateStars();
-
-  function calculateStars(){
-    stars = [];
-
-    for(let x = props.rating; x > 0; x--){
-     if(x >= 1){
-      stars.push(filledStar);
-     }
-     else{
-      stars.push(halfFilledStar);
-     }
-    }
-  }
   
   return (
     <div className="rating">
@@ -34,5 +18,20 @@ const Rating = (props) => {
     </div>
   );
 }
+
+function calculateStars(rating){
+  let stars = [];
+
+  for(let x = rating; x > 0; x--){
+   if(x >= 1){
+    stars.push(filledStar);
+   }
+   else{
+    stars.push(halfFilledStar);
+   }
+  }
+
+  return stars;
+}
  
-export default memo(Rating);
+export default Rating;

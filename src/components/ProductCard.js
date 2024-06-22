@@ -1,5 +1,4 @@
 import "../styles/product-card.css";
-
 import Rating from "./Rating";
 
 const ProductCard = (props) => {

@@ -1,17 +1,17 @@
-import { Link, useParams } from "react-router-dom";
 import "../styles/view-products.css";
 import ProductCard from "./ProductCard";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 const ViewProducts = (props) => {
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
-
   const { key } = useParams();
   const categoriesElem = useRef();
   const [filterBy, setFilterBy] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState(props.products);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+
     const buttons = categoriesElem.current.children;
 
     const handleButtonClick = (index) => {
@@ -40,9 +40,9 @@ const ViewProducts = (props) => {
     return () => {
       Array.from(buttons).forEach((button, index) => {
         button.removeEventListener('click', handleButtonClick(index));
-      });
-    };
-  }, []);
+      })
+    }
+  }, [])
 
   useEffect(() => { 
     let updatedProducts = props.products;
@@ -58,7 +58,7 @@ const ViewProducts = (props) => {
     }
 
     setFilteredProducts(updatedProducts);
-  }, [filterBy, key, props.products]);
+  }, [filterBy, key])
     
   return (
     <div className="view-products container">

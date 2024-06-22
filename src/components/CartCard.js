@@ -7,7 +7,6 @@ import useCartStore from "../hooks/cartStore";
 
 const CartCard = (props) => {
   const [count, setCount] = useState(props.product.quantity);
-  
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   let cart = useCartStore((state) => state.cart);
