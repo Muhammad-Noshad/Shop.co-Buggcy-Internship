@@ -6,7 +6,11 @@ footer{
 
 footer .container{
   display: flex;
+  flex-wrap: wrap;
   gap: 3em;
+  max-width: 120rem;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 footer .container *{
@@ -16,6 +20,10 @@ footer .container *{
 footer .left-section .icons,
 footer .bottom-section .icons{
   cursor: pointer;
+}
+
+footer .left-section{
+  flex: 2;
 }
 
 footer .left-section .icons img{
@@ -47,4 +55,29 @@ footer .bottom-section .icons{
 
 footer .bottom-section .icons img{
   width: 6rem;
+}
+
+@media (max-width: 700px) {
+  footer .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  footer .container{
+    display: block;
+  }
+
+  footer .container .left-section{
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+  }
+
+  footer .container .links + .links{
+    margin-top: 3em;
+  }
 }

@@ -7,8 +7,7 @@
 .products{
   display: grid;
 
-  grid-template-columns: repeat(auto-fill, 30rem);
-  flex-wrap: wrap;
+  grid-template-columns: repeat(4, 30rem);
   gap: 3em;
 
   justify-content: center;
@@ -24,4 +23,16 @@
 
   margin-left: 50%;
   transform: translateX(-50%);
+}
+
+@media (max-width: 1520px) {
+  .products{
+    grid-template-columns: repeat(2, 30rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .products{
+    grid-template-columns: repeat(1, 30rem);
+  }
 }

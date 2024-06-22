@@ -12,9 +12,7 @@ const Checkout = () => {
     <div className="checkout container">
       {
         isSubmitted ||
-        <div className="order">
-          <OrderSummary btnText={"Modify Order"} btnPath={"/view-cart"} />
-        </div>
+        <OrderSummary btnText={"Modify Order"} btnPath={"/view-cart"} />
       }
       <CheckoutForm isSubmitted={isSubmitted} setIsSubmitted={setIsSubmitted} />
     </div>

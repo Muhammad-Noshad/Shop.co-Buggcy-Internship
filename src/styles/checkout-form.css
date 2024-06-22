@@ -1,10 +1,14 @@
+.checkout-form h1{
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 .checkout-form{
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 
   border-radius: 25px;
   padding: 2em;
   flex: 1.5;
-  max-width: 1000px;
 }
 
 .checkout-form .title{

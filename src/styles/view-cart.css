@@ -13,6 +13,8 @@
   justify-content: center;
   gap: 3em;
   flex-wrap: wrap;
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
 .view-cart .wrapper .cart-items .cart-card{
