@@ -43,3 +43,26 @@ header .middle-section img{
   left: 14.5%;
   top: 0.6em;
 }
+
+@media (max-width: 1100px) {
+  header .middle-section img{
+    width: 2.5rem;
+  }
+
+  header .right-section img{
+    width: 80%;
+  }
+}
+
+/* @media (max-width: 730px) {
+  header .middle-section img{
+    width: 2.75%;
+  }
+} */
+
+@media (max-width: 905px) {
+
+  header .right-section img{
+    width: 72%;
+  }
+}

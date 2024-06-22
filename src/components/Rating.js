@@ -25,12 +25,12 @@ const Rating = (props) => {
   
   return (
     <div className="rating">
-    <div className="stars">
-      {stars.map((star) => {
-        return <img key={counter++}  src={star} alt="star.png" />
-      })}
-    </div>
-    <p>{ props.rating + "/5" }</p>
+      <div className="stars">
+        {stars.map((star) => {
+          return <img key={counter++}  src={star} alt="star.png" />
+        })}
+      </div>
+      <p>{ props.rating + "/5" }</p>
     </div>
   );
 }

@@ -18,6 +18,10 @@ footer .bottom-section .icons{
   cursor: pointer;
 }
 
+footer .left-section .icons img{
+  width: 2.7rem;
+}
+
 footer .icons img + img{
   margin-left: 1em;
 }
@@ -39,4 +43,8 @@ footer .bottom-section p{
 
 footer .bottom-section .icons{
   flex: 1.4;
+}
+
+footer .bottom-section .icons img{
+  width: 6rem;
 }

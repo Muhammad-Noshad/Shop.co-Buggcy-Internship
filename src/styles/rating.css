@@ -1,9 +1,12 @@
 .rating{
   display: flex;
   flex-shrink: none;
-  border: 1px solid;
   width: 23rem;
   gap: 3em;
+}
+
+.rating .stars img{
+  width: 2rem;
 }
 
 .rating p{
