@@ -1,9 +1,10 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import "./styles/general.css"
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import useSWR from "swr";
 import useFetch from "./hooks/useFetch";
+import { useEffect } from "react";
 
 import Header from './components/Header';
 import Hero from "./components/Hero";
@@ -18,21 +19,21 @@ import ViewCart from "./components/ViewCart";
 import Loading from "./components/Loading";
 import Checkout from "./components/Checkout";
 import useCartStore from "./hooks/cartStore";
-import { useEffect } from "react";
+import Error from "./components/Error";
 
 function App() {
   const setCart = useCartStore((state) => state.setCart);
-  const { data: products } = useSWR("/products", useFetch);
+  const { data: products, error } = useSWR("/products", useFetch);
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem('cart')) || []);
   }, [])
 
+  if(error)
+    return (<Error />);
+
   if (!products) 
     return (<Loading />);
-
-  console.log(products);
-
   
   return (
     <div className="App">
