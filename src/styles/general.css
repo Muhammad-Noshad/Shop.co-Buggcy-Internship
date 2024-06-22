@@ -31,6 +31,10 @@ button:hover{
   opacity: 0.75;
 }
 
+button:active{
+  opacity: 0.45;
+}
+
 a{
   text-decoration: none;
   color: inherit;

@@ -9,8 +9,7 @@ footer .container{
   flex-wrap: wrap;
   gap: 3em;
   max-width: 120rem;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding: 0 2em;
 }
 
 footer .container *{
@@ -42,7 +41,7 @@ footer .bottom-section.container{
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.20);
   margin-top: 6em;
-  padding: 2em 0;
+  padding: 2em;
 }
 
 footer .bottom-section p{
