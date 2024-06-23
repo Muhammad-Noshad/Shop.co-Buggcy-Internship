@@ -27,13 +27,13 @@
   color: #000000;
 }
 
-@media (max-width: 1520px) {
+@media (max-width: 1310px) {
   .products{
     grid-template-columns: repeat(2, 30rem);
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 320px) {
   .products{
     grid-template-columns: repeat(1, 30rem);
   }

@@ -6,7 +6,7 @@
 
 .view-products .products-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fill, 30rem);
+  grid-template-columns: repeat(4, 30rem);
   gap: 3em;
   justify-content: center;
 }
@@ -34,4 +34,16 @@
 .view-products button.selected{
   background-color: #000000;
   color: #FFFFFF;
+}
+
+@media (max-width: 1310px) {
+  .view-products .products-grid{
+    grid-template-columns: repeat(2, 30rem);
+  }
+}
+
+@media (max-width: 320px) {
+  .view-products .products-grid{
+    grid-template-columns: repeat(1, 30rem);
+  }
 }
