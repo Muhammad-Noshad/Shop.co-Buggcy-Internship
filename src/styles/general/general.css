@@ -27,10 +27,12 @@ button, a{
   cursor: pointer;
 }
 
-/* button{
-  background-color: black;
-  color: white;
-} */
+button{
+  background-color: #000000;
+  color: #FFFFFF;
+  border: none;
+  transition: all ease-in-out 150ms;
+}
 
 button:hover{
   opacity: 0.75;

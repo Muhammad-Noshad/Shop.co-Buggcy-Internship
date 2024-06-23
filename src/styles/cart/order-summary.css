@@ -45,9 +45,6 @@
 }
 
 .order-summary > a button{
-  background-color: #000000;
-  color: #FFFFFF;
-  border: none;
   border-radius: 25px;
   padding: 0.5em 4em;
   margin-top: 2em;

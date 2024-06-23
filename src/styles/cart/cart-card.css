@@ -42,3 +42,11 @@
 .cart-card .right-section .util-section .delete{
   cursor: pointer;
 }
+
+.cart-card .right-section .util-section .delete:hover{
+  opacity: 0.75;
+}
+
+.cart-card .right-section .util-section .delete:active{
+  opacity: 0.45;
+}

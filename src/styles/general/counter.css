@@ -10,6 +10,7 @@
 }
 
 .counter button{
-  border: none;
   padding: 0.25rem 2rem;
+  background-color: #F2F0F1;
+  color: #000000;
 }

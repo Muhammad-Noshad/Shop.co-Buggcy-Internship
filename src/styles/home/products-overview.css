@@ -18,11 +18,13 @@
   margin: 2em 0;
   padding: 0.7em 4em;
 
-  border: none;
   border-radius: 25px;
 
   margin-left: 50%;
   transform: translateX(-50%);
+
+  background-color: #F2F0F1;
+  color: #000000;
 }
 
 @media (max-width: 1520px) {
