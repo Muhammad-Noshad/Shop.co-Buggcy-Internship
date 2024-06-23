@@ -1,10 +1,10 @@
-import "../styles/cart/view-cart.css";
+import "../../styles/cart/view-cart.css";
 
 import { useEffect, useState } from "react";
-import useCartStore from "../hooks/cartStore";
+import useCartStore from "../../hooks/cartStore";
 import CartCard from "./CartCard";
 import OrderSummary from "./OrderSummary";
-import Message from "./Message";
+import Message from "../general/Message";
 
 const ViewCart = () => {
   const cart = useCartStore((state) => state.cart);

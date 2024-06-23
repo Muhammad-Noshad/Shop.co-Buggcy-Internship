@@ -1,11 +1,11 @@
-import "../styles/products/product-details.css";
+import "../../styles/products/product-details.css";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo, useCallback } from "react";
-import useCartStore from "../hooks/cartStore"
-import Counter from "./Counter";
-import Message from "./Message";
-import Rating from "./Rating";
+import useCartStore from "../../hooks/cartStore"
+import Counter from "../general/Counter";
+import Message from "../general/Message";
+import Rating from "../general/Rating";
 
 const ProductDetails = (props) => {
   const cart = useCartStore((state) => state.cart);

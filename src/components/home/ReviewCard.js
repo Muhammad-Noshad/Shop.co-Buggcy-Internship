@@ -1,6 +1,6 @@
-import "../styles/home/review-card.css";
+import "../../styles/home/review-card.css";
 
-import Rating from "./Rating";
+import Rating from "../general/Rating";
 
 const ReviewCard = (props) => {
   return (

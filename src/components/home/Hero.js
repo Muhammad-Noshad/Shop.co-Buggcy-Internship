@@ -1,4 +1,4 @@
-import "../styles/home/hero.css"
+import "../../styles/home/hero.css"
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -14,9 +14,9 @@ const Hero = () => {
         </div>
 
         <div className="right-section">
-          <img src={require("../images/hero.png")} alt="hero.png" className="hero-img"/>
-          <img src={require("../images/star-1.png")} alt="star-1.png" className="star-1"/>
-          <img src={require("../images/star-2.png")} alt="star-2.png" className="star-2"/>
+          <img src={require("../../images/hero.png")} alt="hero.png" className="hero-img"/>
+          <img src={require("../../images/star-1.png")} alt="star-1.png" className="star-1"/>
+          <img src={require("../../images/star-2.png")} alt="star-2.png" className="star-2"/>
         </div>
       </div>
     </div>

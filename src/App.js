@@ -2,24 +2,24 @@ import "./styles/general/general.css"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import { useEffect } from "react";
 import useSWR from "swr";
 import useFetch from "./hooks/useFetch";
-import { useEffect } from "react";
-
-import Header from './components/Header';
-import Hero from "./components/Hero";
-import Banner from "./components/Banner";
-import Stats from "./components/Stats";
-import ProductsOverview from "./components/ProductsOverview";
-import CustomerReviews from "./components/CustomerReviews";
-import Footer from "./components/Footer";
-import ProductDetails from "./components/ProductDetails";
-import ViewProducts from "./components/ViewProducts";
-import ViewCart from "./components/ViewCart";
-import Loading from "./components/Loading";
-import Checkout from "./components/Checkout";
 import useCartStore from "./hooks/cartStore";
-import Error from "./components/Error";
+
+import Header from './components/general/Header';
+import Hero from "./components/home/Hero";
+import Banner from "./components/home/Banner";
+import Stats from "./components/home/Stats";
+import ProductsOverview from "./components/home/ProductsOverview";
+import CustomerReviews from "./components/home/CustomerReviews";
+import Footer from "./components/general/Footer";
+import ProductDetails from "./components/products/ProductDetails";
+import ViewProducts from "./components/products/ViewProducts";
+import ViewCart from "./components/cart/ViewCart";
+import Loading from "./components/general/Loading";
+import Checkout from "./components/checkout/Checkout";
+import Error from "./components/general/Error";
 
 function App() {
   const setCart = useCartStore((state) => state.setCart);

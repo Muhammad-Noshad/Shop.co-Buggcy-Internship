@@ -1,9 +1,9 @@
-import "../styles/cart/cart-card.css";
+import "../../styles/cart/cart-card.css";
 
-import Rating from "./Rating";
-import Counter from "./Counter";
+import Rating from "../general/Rating";
+import Counter from "../general/Counter";
 import { useEffect, useState, useCallback } from "react";
-import useCartStore from "../hooks/cartStore";
+import useCartStore from "../../hooks/cartStore";
 
 const CartCard = (props) => {
   const [count, setCount] = useState(props.product.quantity);
@@ -45,7 +45,7 @@ const CartCard = (props) => {
         <div className="util-section">
           <Counter count={ count } setCount={ setCount } />
           <div className="delete" onClick={removeProduct}>
-            <img src={require("../images/delete.png")} alt="delete.png" />
+            <img src={require("../../images/delete.png")} alt="delete.png" />
           </div>
         </div>
       </div>

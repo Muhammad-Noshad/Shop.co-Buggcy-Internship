@@ -1,5 +1,5 @@
-import "../styles/products/product-card.css";
-import Rating from "./Rating";
+import "../../styles/products/product-card.css";
+import Rating from "../general/Rating";
 
 const ProductCard = (props) => {
   return (

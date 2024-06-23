@@ -1,7 +1,7 @@
-import "../styles/home/products-overview.css"
+import "../../styles/home/products-overview.css"
 
 import { Link } from "react-router-dom";
-import ProductCard from "./ProductCard";
+import ProductCard from "../products/ProductCard";
 
 const ProductsOverview = (props) => {
   return (

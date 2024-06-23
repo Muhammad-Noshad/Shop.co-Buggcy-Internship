@@ -1,4 +1,4 @@
-import "../styles/general/links.css";
+import "../../styles/general/links.css";
 
 const Links = (props) => {
   return (

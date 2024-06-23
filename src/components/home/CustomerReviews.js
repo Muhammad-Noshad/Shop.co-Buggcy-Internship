@@ -1,4 +1,4 @@
-import "../styles/home/customer-reviews.css";
+import "../../styles/home/customer-reviews.css";
 
 import ReviewCard from "./ReviewCard";
 

@@ -1,4 +1,4 @@
-import "../styles/general/message.css";
+import "../../styles/general/message.css";
 import { useEffect, useRef } from "react";
 
 const Message = (props) => {

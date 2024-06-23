@@ -1,4 +1,4 @@
-import "../styles/general/header.css"
+import "../../styles/general/header.css"
 import { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
@@ -31,13 +31,13 @@ const Header = () => {
               handleClick();
            }} />
           <Link to={`/view-products/${search}`}>
-            <img src={require("../images/search.png")} alt="search.png" />
+            <img src={require("../../images/search.png")} alt="search.png" />
           </Link>
         </div>
         
         <div className="right-section">
           <Link to="/view-cart">
-           <img src={require("../images/cart.png")} alt="cart.png" />
+           <img src={require("../../images/cart.png")} alt="cart.png" />
           </Link>
         </div>
       </div>
