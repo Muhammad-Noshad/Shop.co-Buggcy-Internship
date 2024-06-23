@@ -3,13 +3,13 @@ import "../../styles/home/products-overview.css"
 import { Link } from "react-router-dom";
 import ProductCard from "../products/ProductCard";
 
-const ProductsOverview = (props) => {
+const ProductsOverview = ({ className, heading, products }) => {
   return (
-    <div className={ props.className + " container"}>
-      <h1>{ props.heading }</h1>
+    <div className={ className + " container"}>
+      <h1>{ heading }</h1>
       <div className="products">
         {
-          props.products.map((product) => {
+          products.map((product) => {
             return (
               <Link key={product.id} to={`/product-details/${product.id}`}>
                 <ProductCard product={ product }/>

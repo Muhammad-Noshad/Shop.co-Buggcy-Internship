@@ -1,24 +1,19 @@
 import "../../styles/general/loading.css";
+
 import { useEffect, useState } from "react";
 
 const Loading = () => {
   const [dots, setDots] = useState('');
-  const [intervalId, setIntervalId] = useState();
 
   useEffect(() => {
-    if(intervalId){
+    let intervalId = setInterval(() => {
+      setDots((dots) => (dots === '...'? '' : dots + '.'));
+    }, 700);
+
+    return () => {
       clearInterval(intervalId);
     }
-
-    setIntervalId(setInterval(() => {
-      if(dots === "..."){
-        setDots("");
-      }
-      else{
-        setDots(dots + ".");
-      }
-    }, 700))
-  }, [dots]);
+  }, []);
 
   return (
     <div className="loading">

@@ -1,13 +1,15 @@
 import "../../styles/products/view-products.css";
-import ProductCard from "./ProductCard";
-import { Link, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
 
-const ViewProducts = (props) => {
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
+import ProductCard from "./ProductCard";
+
+const ViewProducts = ({ products }) => {
   const { key } = useParams();
   const categoriesElem = useRef();
   const [filterBy, setFilterBy] = useState(null);
-  const [filteredProducts, setFilteredProducts] = useState(props.products);
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -45,10 +47,10 @@ const ViewProducts = (props) => {
   }, [])
 
   useEffect(() => { 
-    let updatedProducts = props.products;
+    let updatedProducts = products;
 
     if (filterBy) {
-      updatedProducts = props.products.filter((product) => product.category === filterBy)
+      updatedProducts = products.filter((product) => product.category === filterBy)
     }
 
     if(key){

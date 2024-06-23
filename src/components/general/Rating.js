@@ -3,8 +3,8 @@ import "../../styles/general/rating.css";
 import filledStar from "../../images/filled-star.png";
 import halfFilledStar from "../../images/half-filled-star.png";
 
-const Rating = (props) => {
-  let stars = calculateStars(props.rating);
+const Rating = ({ rating }) => {
+  let stars = calculateStars(rating);
   let counter = 0;
   
   return (
@@ -14,7 +14,7 @@ const Rating = (props) => {
           return <img key={counter++}  src={star} alt="star.png" />
         })}
       </div>
-      <p>{ props.rating + "/5" }</p>
+      <p>{ rating + "/5" }</p>
     </div>
   );
 }

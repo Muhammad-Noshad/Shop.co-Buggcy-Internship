@@ -1,11 +1,11 @@
 import "../../styles/general/links.css";
 
-const Links = (props) => {
+const Links = ({ title, links }) => {
   return (
     <div className="links">
-      <p className="title">{ props.title }</p>
+      <p className="title">{ title }</p>
       {
-        props.links.map((link, index) => {
+        links.map((link, index) => {
           return <p key={index}>{ link }</p>
         })
       }

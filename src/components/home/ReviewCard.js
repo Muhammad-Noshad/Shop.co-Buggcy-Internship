@@ -2,12 +2,12 @@ import "../../styles/home/review-card.css";
 
 import Rating from "../general/Rating";
 
-const ReviewCard = (props) => {
+const ReviewCard = ({ rating, name, content }) => {
   return (
     <div className="review-card">
-      <Rating rating={ props.rating } />
-      <p className="name">{ props.name }</p>
-      <p className="content">{ props.content }</p>
+      <Rating rating={ rating } />
+      <p className="name">{ name }</p>
+      <p className="content">{ content }</p>
     </div>
   );
 }

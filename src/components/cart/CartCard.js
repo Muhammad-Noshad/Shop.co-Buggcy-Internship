@@ -1,9 +1,10 @@
 import "../../styles/cart/cart-card.css";
 
-import Rating from "../general/Rating";
-import Counter from "../general/Counter";
 import { useEffect, useState, useCallback } from "react";
 import useCartStore from "../../hooks/cartStore";
+
+import Rating from "../general/Rating";
+import Counter from "../general/Counter";
 
 const CartCard = (props) => {
   const [count, setCount] = useState(props.product.quantity);

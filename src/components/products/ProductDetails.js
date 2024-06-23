@@ -1,13 +1,14 @@
 import "../../styles/products/product-details.css";
 
-import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo, useCallback } from "react";
+import { useParams } from "react-router-dom";
 import useCartStore from "../../hooks/cartStore"
+
 import Counter from "../general/Counter";
 import Message from "../general/Message";
 import Rating from "../general/Rating";
 
-const ProductDetails = (props) => {
+const ProductDetails = ({ products }) => {
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
 
@@ -16,8 +17,8 @@ const ProductDetails = (props) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   
   const product = useMemo(() => {
-    return props.products.find((product) => product.id === parseInt(id));
-  }, [props.products, id])
+    return products.find((product) => product.id === parseInt(id));
+  }, [products, id])
 
   const handleClick = useCallback(() => {
     addToCart({ ...product, quantity: count });

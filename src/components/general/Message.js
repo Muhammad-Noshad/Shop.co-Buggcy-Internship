@@ -1,4 +1,5 @@
 import "../../styles/general/message.css";
+
 import { useEffect, useRef } from "react";
 
 const Message = (props) => {
@@ -7,11 +8,14 @@ const Message = (props) => {
   useEffect(() => {
     msg.current.style.top = "1%";
   
-    setTimeout(() => {
+    let timeoutId = setTimeout(() => {
       msg.current.style.top = "-50%";
     }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    }
   }, []);
-  
 
   return (
     <div ref={ msg } className="message" style={{"backgroundColor": `${props.color}`}}>

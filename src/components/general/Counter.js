@@ -1,6 +1,6 @@
 import "../../styles/general/counter.css";
 
-function incCount(count, setCount){
+function incCount(setCount){
   setCount((count) => count + 1);
 }
 
@@ -9,12 +9,12 @@ function decCount(count, setCount){
     setCount((count) => count - 1);
 }
 
-const Counter = (props) => {
+const Counter = ({ count, setCount }) => {
   return (
     <div className="counter">
-      <button className="inc-btn" onClick={ () => { incCount(props.count, props.setCount )} } > + </button>
-      <p>{ props.count }</p>
-      <button className="dec-btn" onClick={ () => { decCount(props.count, props.setCount )} } > - </button>
+      <button className="inc-btn" onClick={ () => { incCount(setCount)} }> + </button>
+      <p>{ count }</p>
+      <button className="dec-btn" onClick={ () => { decCount(count, setCount)} }> - </button>
     </div>
   );
 }

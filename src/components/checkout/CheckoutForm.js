@@ -1,10 +1,12 @@
 import "../../styles/checkout/checkout-form.css";
 
-import { useFormik } from "formik";
 import { useEffect, useCallback } from "react";
+import { useFormik } from "formik";
 import useCartStore from "../../hooks/cartStore";
+
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { checkoutFormSchema } from "../../form-schemas/checkout-form-schema";
+
 import Message from "../general/Message";
 
 const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
@@ -13,7 +15,7 @@ const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
   const onSubmit = useCallback(() => {
     setIsSubmitted(true);
     clearCart();
-  }, [clearCart, setIsSubmitted])
+  }, [])
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {
