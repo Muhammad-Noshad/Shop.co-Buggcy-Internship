@@ -1,4 +1,4 @@
-import "../styles/rating.css";
+import "../styles/general/rating.css";
 
 import filledStar from "../images/filled-star.png";
 import halfFilledStar from "../images/half-filled-star.png";

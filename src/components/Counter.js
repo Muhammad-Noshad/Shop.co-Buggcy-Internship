@@ -1,4 +1,4 @@
-import "../styles/counter.css";
+import "../styles/general/counter.css";
 
 function incCount(count, setCount){
   setCount((count) => count + 1);

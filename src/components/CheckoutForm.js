@@ -1,4 +1,4 @@
-import "../styles/checkout-form.css";
+import "../styles/checkout/checkout-form.css";
 
 import { useFormik } from "formik";
 import { useEffect, useCallback } from "react";

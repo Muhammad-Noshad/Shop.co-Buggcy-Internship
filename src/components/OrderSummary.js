@@ -1,4 +1,4 @@
-import "../styles/order-summary.css";
+import "../styles/cart/order-summary.css";
 
 import { useEffect, useState } from "react";
 import useCartStore from "../hooks/cartStore";

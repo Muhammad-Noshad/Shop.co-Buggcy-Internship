@@ -1,4 +1,4 @@
-import "../styles/product-details.css";
+import "../styles/products/product-details.css";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo, useCallback } from "react";

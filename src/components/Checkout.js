@@ -1,4 +1,4 @@
-import "../styles/checkout.css";
+import "../styles/checkout/checkout.css";
 
 import { useEffect, useState } from "react";
 import OrderSummary from './OrderSummary'

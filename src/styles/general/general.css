@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Satoshi';
-  src: url('../fonts/Satoshi-Variable.woff2') format('woff2'),
-       url('../fonts/Satoshi-Variable.woff') format('woff'),
-       url('../fonts/Satoshi-Variable.ttf') format('truetype');
+  src: url('../../fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('../../fonts/Satoshi-Variable.woff') format('woff'),
+       url('../../fonts/Satoshi-Variable.ttf') format('truetype');
   font-weight: 300 900;
   font-display: swap;
   font-style: normal;
@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Integral-cf';
-  src: url('../fonts/integralcf-bold.otf');
+  src: url('../../fonts/integralcf-bold.otf');
 }
 
 *, *::before, *::after{
@@ -26,6 +26,11 @@ html{
 button, a{
   cursor: pointer;
 }
+
+/* button{
+  background-color: black;
+  color: white;
+} */
 
 button:hover{
   opacity: 0.75;

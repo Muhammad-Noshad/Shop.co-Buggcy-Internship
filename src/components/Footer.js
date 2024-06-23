@@ -1,4 +1,4 @@
-import "../styles/footer.css";
+import "../styles/general/footer.css";
 
 import Links from "./Links";
 

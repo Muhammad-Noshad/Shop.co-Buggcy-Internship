@@ -1,4 +1,4 @@
-import "../styles/view-products.css";
+import "../styles/products/view-products.css";
 import ProductCard from "./ProductCard";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";

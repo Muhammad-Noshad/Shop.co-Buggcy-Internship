@@ -1,4 +1,4 @@
-import "../styles/review-card.css";
+import "../styles/home/review-card.css";
 
 import Rating from "./Rating";
 

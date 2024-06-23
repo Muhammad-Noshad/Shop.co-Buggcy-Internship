@@ -1,8 +1,8 @@
-import "../styles/cart-card.css";
+import "../styles/cart/cart-card.css";
 
 import Rating from "./Rating";
 import Counter from "./Counter";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useCartStore from "../hooks/cartStore";
 
 const CartCard = (props) => {
@@ -11,7 +11,7 @@ const CartCard = (props) => {
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   let cart = useCartStore((state) => state.cart);
 
-  function removeProduct(){
+  const removeProduct = useCallback(() => {
     removeFromCart(props.product);
     
     props.setIsProductRemoved(true);
@@ -19,13 +19,13 @@ const CartCard = (props) => {
       props.setIsProductRemoved(false);
     }, 1200);
     
-    cart = useCartStore.getState().cart;
+    let cart = useCartStore.getState().cart;
     localStorage.setItem('cart', JSON.stringify(cart));
-  }
+  }, [])
 
   useEffect(() => {
     updateQuantity(props.product, count);
-  }, [count]);
+  }, [count])
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
