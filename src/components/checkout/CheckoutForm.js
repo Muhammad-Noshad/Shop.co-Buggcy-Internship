@@ -26,7 +26,7 @@ const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
       cvv: "",
       expiryDate: "",
     },
-    // validationSchema: checkoutFormSchema,
+    validationSchema: checkoutFormSchema,
     onSubmit: onSubmit,
   });
 
