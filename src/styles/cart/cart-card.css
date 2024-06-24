@@ -41,6 +41,7 @@
 
 .cart-card .right-section .util-section .delete{
   cursor: pointer;
+  width: 2.5rem;
 }
 
 .cart-card .right-section .util-section .delete:hover{
@@ -49,4 +50,18 @@
 
 .cart-card .right-section .util-section .delete:active{
   opacity: 0.45;
+}
+
+@media (max-width: 650px) {
+  .cart-card .left-section .img{
+    width: 15rem;
+    height: 15rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .cart-card{
+    flex-direction: column;
+    align-items: center;
+  }
 }

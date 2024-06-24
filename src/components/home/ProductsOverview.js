@@ -19,7 +19,9 @@ const ProductsOverview = ({ className, heading, products }) => {
         }
       </div>
       <Link to={"/view-products/"}>
-        <button>View all</button>
+        <div className="to-center">
+          <button>View all</button>
+        </div>
       </Link>
     </div>
   );

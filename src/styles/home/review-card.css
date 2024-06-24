@@ -7,8 +7,7 @@
 
   border-radius: 25px;
   padding: 2em;
-
-  max-width: 40rem;
+  min-width: 25rem;
 }
 
 .review-card .name{

@@ -42,8 +42,20 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 640px) {
   .view-products .products-grid{
-    grid-template-columns: repeat(1, 30rem);
+    grid-template-columns: repeat(2, 25rem);
+  }
+}
+
+@media (max-width: 530px) {
+  .view-products .products-grid{
+    grid-template-columns: repeat(2, 20rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .view-products .products-grid{
+    grid-template-columns: repeat(1, 25rem);
   }
 }

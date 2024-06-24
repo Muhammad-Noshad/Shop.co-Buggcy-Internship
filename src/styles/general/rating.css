@@ -1,8 +1,8 @@
 .rating{
   display: flex;
+  width: 100%;
   flex-shrink: none;
-  width: 23rem;
-  gap: 3em;
+  gap: 1em;
 }
 
 .rating .stars img{

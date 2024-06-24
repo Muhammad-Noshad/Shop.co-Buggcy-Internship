@@ -13,15 +13,17 @@
   justify-content: center;
 }
 
+.top-selling .to-center,
+.new-arrivals .to-center{
+  text-align: center;
+}
+
 .top-selling button,
 .new-arrivals button{
   margin: 2em 0;
   padding: 0.7em 4em;
 
   border-radius: 25px;
-
-  margin-left: 50%;
-  transform: translateX(-50%);
 
   background-color: #F2F0F1;
   color: #000000;
@@ -33,8 +35,20 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 640px) {
   .products{
-    grid-template-columns: repeat(1, 30rem);
+    grid-template-columns: repeat(2, 25rem);
+  }
+}
+
+@media (max-width: 530px) {
+  .products{
+    grid-template-columns: repeat(2, 20rem);
+  }
+}
+
+@media (max-width: 430px) {
+  .products{
+    grid-template-columns: repeat(1, 25rem);
   }
 }
