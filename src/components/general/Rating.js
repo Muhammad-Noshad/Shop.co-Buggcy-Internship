@@ -1,17 +1,18 @@
 import "../../styles/general/rating.css";
 
+import { memo } from "react";
+
 import filledStar from "../../images/filled-star.png";
 import halfFilledStar from "../../images/half-filled-star.png";
 
 const Rating = ({ rating }) => {
   let stars = calculateStars(rating);
-  let counter = 0;
   
   return (
     <div className="rating">
       <div className="stars">
-        {stars.map((star) => {
-          return <img key={counter++}  src={star} alt="star.png" />
+        {stars.map((star, index) => {
+          return <img key={index}  src={star} alt="star.png" />
         })}
       </div>
       <p>{ rating + "/5" }</p>
@@ -34,4 +35,4 @@ function calculateStars(rating){
   return stars;
 }
  
-export default Rating;
+export default memo(Rating);

@@ -1,6 +1,6 @@
 import "../../styles/general/header.css"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Header = () => {
@@ -9,13 +9,13 @@ const Header = () => {
   const key = useLocation().pathname.split('/');
 
   useEffect(() => {
-    if(key.length === 3 && isNaN(key[key.length - 1]))
+    if(key[1] === 'view-products')
       setSearch(key[key.length - 1]);
   }, [])
 
-  function handleClick(){
+  const handleClick = useCallback(() => {
     history.push(`/view-products/${search.trim()}`);
-  }
+  }, []);
 
   return (
     <header>

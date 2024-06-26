@@ -1,6 +1,6 @@
 import "../../styles/products/product-details.css";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, memo } from "react";
 import { useParams } from "react-router-dom";
 import useCartStore from "../../hooks/cartStore"
 
@@ -52,4 +52,4 @@ const ProductDetails = ({ products }) => {
   );
 }
  
-export default ProductDetails;
+export default memo(ProductDetails);

@@ -5,7 +5,7 @@ import useCartStore from "../../hooks/cartStore";
 
 import { Link } from "react-router-dom";
 
-const OrderSummary = (props) => {
+const OrderSummary = ({ btnPath, btnText }) => {
   const [items, setItems] = useState(0);
   const [subTotal, setSubTotal] = useState(0);
   const shipping = 15;
@@ -56,8 +56,8 @@ const OrderSummary = (props) => {
         <p>{"Total: " }</p>
         <p className="total">{ "$" + total.toFixed(2) }</p>
       </div>
-      <Link to={ props.btnPath }>
-        <button disabled={!items} className={ items? "":"disabled" }>{ props.btnText }</button>
+      <Link to={ btnPath }>
+        <button disabled={!items} className={ items? "":"disabled" }>{ btnText }</button>
       </Link>
     </div>
   );

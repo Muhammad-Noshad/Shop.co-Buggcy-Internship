@@ -2,7 +2,7 @@ import "../../styles/general/message.css";
 
 import { useEffect, useRef } from "react";
 
-const Message = (props) => {
+const Message = ({ message, color }) => {
   const msg = useRef();
 
   useEffect(() => {
@@ -18,8 +18,8 @@ const Message = (props) => {
   }, []);
 
   return (
-    <div ref={ msg } className="message" style={{"backgroundColor": `${props.color}`}}>
-      <p>{ props.message }</p>
+    <div ref={ msg } className="message" style={{"backgroundColor": `${color}`}}>
+      <p>{ message }</p>
     </div>
   );
 }

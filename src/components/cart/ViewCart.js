@@ -14,6 +14,10 @@ const ViewCart = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant"});
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart])
   
   return (
     <div className="view-cart container">
