@@ -40,8 +40,8 @@
 }
 
 .cart-card .right-section .util-section .delete{
-  cursor: pointer;
   width: 2.5rem;
+  cursor: pointer;
 }
 
 .cart-card .right-section .util-section .delete:hover{

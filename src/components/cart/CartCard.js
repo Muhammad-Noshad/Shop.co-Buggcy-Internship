@@ -18,8 +18,6 @@ const CartCard = ({ product, setIsProductRemoved }) => {
     setTimeout(() => {
       setIsProductRemoved(false);
     }, 1200);
-    
-    localStorage.setItem('cart', JSON.stringify(useCartStore.getState().cart));
   }, [])
 
   useEffect(() => {

@@ -26,7 +26,8 @@ const ViewProducts = ({ products }) => {
           Array.from(buttons).forEach((button, idx) => {
             if (idx === index) {
               button.classList.add('selected');
-            } else {
+            }
+            else {
               button.classList.remove('selected');
             }
           });
