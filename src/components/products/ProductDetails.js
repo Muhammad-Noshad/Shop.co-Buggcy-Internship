@@ -24,7 +24,7 @@ const ProductDetails = ({ products }) => {
     addToCart({ ...product, quantity: count });
     setIsAddedToCart(true);
     setTimeout(() => {setIsAddedToCart(false)}, 1200);
-  }, [product, count, addToCart, setIsAddedToCart])
+  }, [product, count])
   
   useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
 

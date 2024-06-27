@@ -14,8 +14,8 @@ const Header = () => {
   }, [])
 
   const handleClick = useCallback(() => {
-    history.push(`/view-products/${search.trim()}`);
-  }, []);
+    history.push(`/view-products/${search}`);
+  }, [search]);
 
   return (
     <header>
@@ -27,7 +27,7 @@ const Header = () => {
         </div>
         
         <div className="middle-section">
-          <input type="text" id="search" value={ search } placeholder="Search for products..." onChange={ (e) => { setSearch(e.target.value) } } onKeyPress={(e) => { 
+          <input type="text" id="search" value={ search } placeholder="Search for products..." onChange={ (e) => { setSearch(e.target.value) } } onKeyUp={(e) => { 
             if(e.key === 'Enter')
               handleClick();
            }} />
