@@ -10,7 +10,6 @@ import useCartStore from "./hooks/cartStore";
 import Header from './components/general/Header';
 import Hero from "./components/home/Hero";
 import Banner from "./components/home/Banner";
-import Stats from "./components/home/Stats";
 import ProductsOverview from "./components/home/ProductsOverview";
 import CustomerReviews from "./components/home/CustomerReviews";
 import Footer from "./components/general/Footer";
