@@ -40,6 +40,9 @@ const Header = () => {
           <Link to="/view-cart">
            <img src={require("../../images/cart.png")} alt="cart.png" />
           </Link>
+          <Link to="/view-profile">
+           <img src={require("../../images/profile.png")} alt="profile.png" />
+          </Link>
         </div>
       </div>
     </header>

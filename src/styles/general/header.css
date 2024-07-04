@@ -57,3 +57,7 @@ header .middle-section img{
 header .right-section img{
   width: 2.5rem;
 }
+
+header .right-section a:last-of-type{
+  margin-left: 2.5em;
+}
