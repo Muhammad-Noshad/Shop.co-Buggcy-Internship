@@ -34,6 +34,7 @@ const SignIn = () => {
         setDisplay(true);
         setTimeout(() => {setDisplay(false)}, 1200);
       }
+      console.log(res.data.user);
     })
     .catch((err) => {
       console.log("An error occurred!", err);

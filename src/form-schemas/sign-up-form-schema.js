@@ -4,7 +4,9 @@ export const signUpFormSchema = yup.object().shape({
   firstName: yup.string().required("First Name is a required field"),
   lastName: yup.string().required("Last Name is a required field"),
   phoneNo: yup.number().required("Phone No is a required field"),
-  dateOfBirth: yup.date().required("Date of Birth is a required field"),
+  dateOfBirth: yup.date().test('LessThanToday', `Date of birth should be smaller than ${new Date}`, (value) => {
+    return value <= new Date;
+  }).required("Date of Birth is a required field"),
   profilePic: yup.mixed().test("fileSize", "File must be under 2MB", (value) => {
     return value && value.size <= 2 * 1024 * 1024; // 2 MB
   }).required("Profile Picture is a required field"),

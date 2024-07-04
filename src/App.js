@@ -55,7 +55,6 @@ function App() {
     verifyToken();
 
     // Use abort controller in cleanup function
-    console.log("Token verifier ran!");
   }, []);
 
   const { data: products, error } = useSWR("/products", useFetch);
