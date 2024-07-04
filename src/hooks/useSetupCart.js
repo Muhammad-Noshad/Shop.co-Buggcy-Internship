@@ -6,7 +6,7 @@ export const useSetupCart = () => {
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem('cart')) || []);
-  }, [setCart]);
+  }, []);
 };
 
 export default useSetupCart;

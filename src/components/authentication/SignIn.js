@@ -9,13 +9,14 @@ import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react";
 import Message from "../general/Message";
+import useUserStore from "../../hooks/userStore";
 
 const SignIn = () => {
   const history = useHistory();
   const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
-
+  const setUser = useUserStore((state) => state.setUser);
 
   async function onSubmit({ email, password }){
     await axios.post("http://localhost:8000/sign-in", {
@@ -27,6 +28,7 @@ const SignIn = () => {
       if(res.data.success){
         history.push("/");
         setColor("green");
+        setUser(res.data.user);
       }
       else{
         setMessage(res.data.message);
@@ -34,7 +36,6 @@ const SignIn = () => {
         setDisplay(true);
         setTimeout(() => {setDisplay(false)}, 1200);
       }
-      console.log(res.data.user);
     })
     .catch((err) => {
       console.log("An error occurred!", err);

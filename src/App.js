@@ -1,11 +1,9 @@
 import "./styles/general/general.css"
 
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
-import { useEffect } from "react";
 import useSWR from "swr";
 import useFetch from "./hooks/useFetch";
-import useCartStore from "./hooks/cartStore";
 
 import Header from './components/general/Header';
 import Hero from "./components/home/Hero";
@@ -24,39 +22,15 @@ import SignUp from "./components/authentication/SignUp";
 import ViewProfile from "./components/profile/ViewProfile";
 
 import useSetupCart from "./hooks/useSetupCart";
-import axios from "axios";
+import { useVerifyToken } from "./hooks/useVerifyToken";
 
 function App() {
   useSetupCart();
+  useVerifyToken();
 
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
-  const history = useHistory();
-
-  useEffect(() => {
-    async function verifyToken(){
-      await axios.get("http://localhost:8000/verify-token", {
-        withCredentials: true
-      })
-      .then((res) => {
-        if(res.data.isAuthenticated){
-          if(location.pathname === "/sign-in" || location.pathname === "/sign-up")
-            history.push("/");
-        }
-        else{
-          history.push("/sign-in");
-        }
-      })
-      .catch((err) => {
-        console.log("An error occurred!", err);
-      })
-    }
-
-    verifyToken();
-
-    // Use abort controller in cleanup function
-  }, []);
-
+  
   const { data: products, error } = useSWR("/products", useFetch);
 
   if(error)
