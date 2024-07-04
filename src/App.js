@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import useFetch from "./hooks/useFetch";
 import useCartStore from "./hooks/cartStore";
-import useIsAuthorized from "./hooks/isAuthorized";
 
 import Header from './components/general/Header';
 import Hero from "./components/home/Hero";
@@ -24,16 +23,40 @@ import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
 import ViewProfile from "./components/profile/ViewProfile";
 
-import useAuthorizationRedirect from "./hooks/useAuthorizationRedirect";
 import useSetupCart from "./hooks/useSetupCart";
-
+import axios from "axios";
 
 function App() {
-  useAuthorizationRedirect();
   useSetupCart();
-  
+
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
+  const history = useHistory();
+
+  useEffect(() => {
+    async function verifyToken(){
+      await axios.get("http://localhost:8000/verify-token", {
+        withCredentials: true
+      })
+      .then((res) => {
+        if(res.data.isAuthenticated){
+          if(location.pathname === "/sign-in" || location.pathname === "/sign-up")
+            history.push("/");
+        }
+        else{
+          history.push("/sign-in");
+        }
+      })
+      .catch((err) => {
+        console.log("An error occurred!", err);
+      })
+    }
+
+    verifyToken();
+
+    // Use abort controller in cleanup function
+    console.log("Token verifier ran!");
+  }, []);
 
   const { data: products, error } = useSWR("/products", useFetch);
 

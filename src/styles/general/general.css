@@ -64,10 +64,6 @@ p, button, input, label{
   font-weight: 400;
 }
 
-input[type=date]:invalid{
-  color: grey;
-}
-
 .container{
   max-width: 90%;
   margin: 0 auto;

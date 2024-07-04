@@ -6,13 +6,11 @@ import { signInFormSchema } from "../../form-schemas/sign-in-form-schema";
 import FormField from "../checkout/FormField";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import useIsAuthorized from "../../hooks/isAuthorized";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Message from "../general/Message";
 
 const SignIn = () => {
-  const setIsAuthorized = useIsAuthorized((state) => state.setIsAuthorized);
   const history = useHistory();
   const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState('');
@@ -26,9 +24,7 @@ const SignIn = () => {
     }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   withCredentials: true})
     .then((res) => {
-      console.log(res.data.message);
       if(res.data.success){
-        setIsAuthorized(true);
         history.push("/");
         setColor("green");
       }
@@ -52,27 +48,6 @@ const SignIn = () => {
     validationSchema: signInFormSchema,
     onSubmit: onSubmit,
   });
-
-  useEffect(() => {
-    async function verifyToken(){
-      await axios.get("http://localhost:8000/verify-token", {
-        withCredentials: true
-      })
-      .then((res) => {
-        if(res.data.success){
-          setIsAuthorized(true);
-          history.push("/");
-        }
-      })
-      .catch((err) => {
-        console.log("An error occurred!", err);
-      })
-    }
-
-    verifyToken();
-
-    // Use abort controller in cleanup function
-  }, []);
 
   return (
     <div className="sign-in-wrapper">
