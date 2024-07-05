@@ -4,11 +4,11 @@ export const signUpFormSchema = yup.object().shape({
   firstName: yup.string().required("First Name is a required field"),
   lastName: yup.string().required("Last Name is a required field"),
   phoneNo: yup.number().required("Phone No is a required field"),
-  dateOfBirth: yup.date().test('LessThanToday', `Date of birth should be smaller than ${new Date}`, (value) => {
+  dateOfBirth: yup.date().test('LessThanToday', `Date of birth should be smaller than ${(new Date).toLocaleDateString("en-GB")}`, (value) => {
     return value <= new Date;
   }).required("Date of Birth is a required field"),
-  profilePic: yup.mixed().test("fileSize", "File must be under 2MB", (value) => {
-    return value && value.size <= 2 * 1024 * 1024; // 2 MB
+  profilePic: yup.mixed().test("fileSize", "File must be under 5MB", (value) => {
+    return value && value.size <= 5 * 1024 * 1024; 
   }).required("Profile Picture is a required field"),
   email: yup.string().email("Please enter a valid Email!").required(),
   password: yup.string().min(8).test("doesContainCapital", "Password must contain atleast one capital letter", (value) => {

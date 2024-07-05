@@ -23,6 +23,8 @@ import ViewProfile from "./components/profile/ViewProfile";
 
 import useSetupCart from "./hooks/useSetupCart";
 import { useVerifyToken } from "./hooks/useVerifyToken";
+import EditPersonalInfo from "./components/profile/EditPersonalInfo";
+import EditAccountInfo from "./components/profile/EditAccountInfo";
 
 function App() {
   useSetupCart();
@@ -68,8 +70,14 @@ function App() {
         <Route path="/checkout">
           <Checkout />
         </Route>
-        <Route path="/view-profile">
+        <Route exact path="/profile">
           <ViewProfile />
+        </Route>
+        <Route path="/profile/edit-personal-info">
+          <EditPersonalInfo />
+        </Route>
+        <Route path="/profile/edit-account-info">
+          <EditAccountInfo />
         </Route>
       </Switch>
       { showHeaderAndFooter && <Footer /> }

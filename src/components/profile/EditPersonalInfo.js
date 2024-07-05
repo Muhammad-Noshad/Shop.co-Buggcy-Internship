@@ -1,0 +1,163 @@
+import "../../styles/profile/edit-profile.css";
+import "../../styles/general/form.css";
+import Message from "../general/Message";
+
+
+import { useFormik } from "formik";
+import { editPersonalInfoSchema } from "../../form-schemas/edit-personal-info-schema";
+import FormField from "../checkout/FormField";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import useUserStore from "../../hooks/userStore";
+
+const EditPersonalInfo = () => {
+  const [display, setDisplay] = useState(false);
+  const [message, setMessage] = useState('');
+  const [color, setColor] = useState('');
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
+
+  async function onSubmit({ firstName, lastName, phoneNo, dateOfBirth }){
+    await axios.patch("http://localhost:8000/profile/edit/personal-info", {
+      firstName,
+      lastName,
+      phoneNo,
+      dateOfBirth,
+      email: user.email,
+    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
+    .then((res) => {
+      setMessage(res.data.message);
+      if(res.data.success){
+        setColor("green");
+        setUser(res.data.user);
+      }
+      else{
+        setColor("red");
+      }
+      setDisplay(true);
+      setTimeout(() => {
+        setDisplay(false) 
+      }, 1200);
+    })
+    .catch((err) => {
+      console.log("An error occurred!", err);
+    });
+  }
+
+  const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
+    initialValues: {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      phoneNo: user.phoneNo,
+      dateOfBirth: user.dateOfBirth.split("T")[0],
+    },
+    validationSchema: editPersonalInfoSchema,
+    onSubmit: onSubmit,
+  });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant"});
+  }, []);
+
+  return (
+    <div className="edit-profile">
+      <div className="sign-up-wrapper">
+        <div className="sign-up-form">
+          {display && <Message message={message} color={color} />}
+          <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
+          <h1>Edit Personal Info📝</h1>
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: "2em",
+            }}
+          >
+            Replace the existing information with new one
+          </p>
+          <form
+            onSubmit={handleSubmit}
+            autoComplete="off"
+            className={isSubmitting ? "disabled" : ""}
+          >
+            <FormField
+              label="First Name"
+              type="text"
+              id="firstName"
+              className={
+                errors.firstName && touched.firstName ? "input-error" : ""
+              }
+              value={values.firstName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={
+                errors.firstName && touched.firstName ? errors.firstName : false
+              }
+            />
+            <FormField
+              label="Last Name"
+              type="text"
+              id="lastName"
+              className={
+                errors.lastName && touched.lastName ? "input-error" : ""
+              }
+              value={values.lastName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={
+                errors.lastName && touched.lastName ? errors.lastName : false
+              }
+            />
+            <FormField
+              label="Phone No"
+              type="tel"
+              id="phoneNo"
+              className={errors.phoneNo && touched.phoneNo ? "input-error" : ""}
+              value={values.phoneNo}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.phoneNo && touched.phoneNo ? errors.phoneNo : false}
+            />
+            <FormField
+              label="Date of Birth"
+              type="date"
+              id="dateOfBirth"
+              className={
+                errors.dateOfBirth && touched.dateOfBirth ? "input-error" : ""
+              }
+              value={values.dateOfBirth}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={
+                errors.dateOfBirth && touched.dateOfBirth
+                  ? errors.dateOfBirth
+                  : false
+              }
+            />
+            <Link to="/profile">
+              <p
+                style={{
+                  textAlign: "center",
+                  marginTop: "2em",
+                }}
+              >
+                <strong>
+                  <u>Done making changes? Back to Profile</u>
+                </strong>
+              </p>
+            </Link>
+            <button 
+              disabled={isSubmitting}
+              className={isSubmitting ? "disabled" : ""}
+              type="submit"
+            >
+              Submit Changes
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+ 
+export default EditPersonalInfo;

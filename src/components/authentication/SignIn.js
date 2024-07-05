@@ -54,46 +54,65 @@ const SignIn = () => {
   return (
     <div className="sign-in-wrapper">
       <div className="sign-in-form">
-    {
-      display && <Message message={ message } color={ color } />
-    }
-    <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
-    <h1>Welcome Back👋</h1>
-    <p style={{
-      "textAlign":"center",
-      "marginBottom": "2em"
-      }}>Sign in to continue </p>
-    <form onSubmit={handleSubmit} autoComplete="off" className={isSubmitting? "disabled":""}>
-      <FormField 
-        label="Email" 
-        type="email" 
-        id="email" 
-        className={ errors.email && touched.email? "input-error":""} 
-        value={ values.email } 
-        onChange={ handleChange } 
-        onBlur={ handleBlur } 
-        error={ errors.email && touched.email? errors.email:false } 
-      />
-      <FormField 
-        label="Password" 
-        type="password" 
-        id="password" 
-        className={ errors.password && touched.password? "input-error":""} 
-        value={ values.password } 
-        onChange={ handleChange } 
-        onBlur={ handleBlur } 
-        error={ errors.password && touched.password? errors.password:false } 
-      />
-      <Link to="/sign-up">
-      <p style={{
-        "textAlign":"center",
-        "marginTop": "2em"
-        }}><strong><u>Don't have an account? Sign up now!</u></strong></p>
-      </Link>
-      <button disabled={ isSubmitting } className={ isSubmitting? "disabled":"" } type="submit">Sign In</button>
-    </form>
-    
-    </div>
+        {display && <Message message={message} color={color} />}
+        <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
+        <h1>Welcome Back👋</h1>
+        <p
+          style={{
+            textAlign: "center",
+            marginBottom: "2em",
+          }}
+        >
+          Sign in to continue{" "}
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          className={isSubmitting ? "disabled" : ""}
+        >
+          <FormField
+            label="Email"
+            type="email"
+            id="email"
+            className={errors.email && touched.email ? "input-error" : ""}
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={errors.email && touched.email ? errors.email : false}
+          />
+          <FormField
+            label="Password"
+            type="password"
+            id="password"
+            className={errors.password && touched.password ? "input-error" : ""}
+            value={values.password}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={
+              errors.password && touched.password ? errors.password : false
+            }
+          />
+          <Link to="/sign-up">
+            <p
+              style={{
+                textAlign: "center",
+                marginTop: "2em",
+              }}
+            >
+              <strong>
+                <u>Don't have an account? Sign up now!</u>
+              </strong>
+            </p>
+          </Link>
+          <button
+            disabled={isSubmitting}
+            className={isSubmitting ? "disabled" : ""}
+            type="submit"
+          >
+            Sign In
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

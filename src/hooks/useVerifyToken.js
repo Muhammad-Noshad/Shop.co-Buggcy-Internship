@@ -10,7 +10,7 @@ export const useVerifyToken = () => {
 
   useEffect(() => {
     async function verifyToken(){
-      await axios.get("http://localhost:8000/verify-token", {
+      await axios.get("http://localhost:8000/token/verify", {
         withCredentials: true
       })
       .then((res) => {
