@@ -32,7 +32,7 @@ function App() {
 
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
-  
+
   const { data: products, error } = useSWR("/products", useFetch);
 
   if(error)
