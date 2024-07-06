@@ -87,6 +87,7 @@ const SignUp = () => {
           className={isSubmitting ? "disabled" : ""}
           encType="multipart/form-data"
         >
+          <p className="title">Personal Information</p>
           <FormField
             label="First Name"
             type="text"
@@ -139,23 +140,7 @@ const SignUp = () => {
                 : false
             }
           />
-          <FormField
-            label="Profile Picture"
-            type="file"
-            accept="image/*"
-            id="profilePic"
-            className={
-              errors.profilePic && touched.profilePic ? "input-error" : ""
-            }
-            value={undefined}
-            onChange={handleFileChange}
-            onBlur={handleBlur}
-            error={
-              errors.profilePic && touched.profilePic
-                ? errors.profilePic
-                : false
-            }
-          />
+          <p className="title">Account Information</p>
           <FormField
             label="Email"
             type="email"
@@ -194,6 +179,24 @@ const SignUp = () => {
             error={
               errors.confirmPassword && touched.confirmPassword
                 ? errors.confirmPassword
+                : false
+            }
+          />
+          <p className="title">Profile Picture</p>
+          <FormField
+            label="Profile Picture"
+            type="file"
+            accept="image/*"
+            id="profilePic"
+            className={
+              errors.profilePic && touched.profilePic ? "input-error" : ""
+            }
+            value={undefined}
+            onChange={handleFileChange}
+            onBlur={handleBlur}
+            error={
+              errors.profilePic && touched.profilePic
+                ? errors.profilePic
                 : false
             }
           />

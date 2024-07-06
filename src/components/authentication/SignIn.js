@@ -143,6 +143,7 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        <p className="title">OR</p>
         <div className="google-login">
           <GoogleLogin
             onSuccess={credentialResponse => {

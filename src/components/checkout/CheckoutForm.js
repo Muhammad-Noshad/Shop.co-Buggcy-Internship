@@ -21,8 +21,6 @@ const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {
-      name: "",
-      email: "",
       address: "",
       city: "",
       country: "",
@@ -54,29 +52,6 @@ const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
       {
         isSubmitted || 
         <form onSubmit={handleSubmit} autoComplete="off" className={isSubmitting? "disabled":""}>
-          <p className="title">Personal Information</p>
-          <FormField 
-            label="Name" 
-            type="text" 
-            id="name" 
-            className={ errors.name && touched.name? "input-error":""} 
-            value={ values.name } 
-            onChange={ handleChange } 
-            onBlur={ handleBlur } 
-            error={ errors.name && touched.name? errors.name:false } 
-          />      
-          
-          <FormField 
-            label="Email" 
-            type="email" 
-            id="email" 
-            className={ errors.email && touched.email? "input-error":""} 
-            value={ values.email } 
-            onChange={ handleChange } 
-            onBlur={ handleBlur } 
-            error={ errors.email && touched.email? errors.email:false } 
-          />
-
           <p className="title">Shipping Address</p>
           <FormField 
             label="Address" 

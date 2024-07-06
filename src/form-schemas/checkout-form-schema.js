@@ -1,8 +1,6 @@
 import * as yup from "yup";
 
 export const checkoutFormSchema = yup.object().shape({
-  name: yup.string().required(),
-  email: yup.string().email("Please enter a valid Email!").required(),
   address: yup.string().required(),
   city: yup.string().required(),
   country: yup.string().required(),
