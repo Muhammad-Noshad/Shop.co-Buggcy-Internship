@@ -2,10 +2,11 @@
   position: fixed;
   width: 80%;
   background-color: #F2F1F0;
-  padding: 2em 0;
+  padding: 5em 0 2em 0;
   border-radius: 25px;
   top: 50%;
   transform: translateY(-50%);
+  text-align: left;
 }
 
 .edit-profile-pic button{
@@ -21,11 +22,6 @@
   top: 5%;
   position: absolute;
   cursor: pointer;
-}
-
-.edit-profile-pic .err{
-  margin-top: 0.5em;
-  color: red;
 }
 
 .icon:hover{

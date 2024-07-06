@@ -2,14 +2,11 @@ import "../../styles/profile/view-profile.css";
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-import { useFormik } from "formik";
 import useUserStore from "../../hooks/userStore";
 import API from "../../hooks/useAPI";
 import { Link } from "react-router-dom";
-import { editProfilePicSchema } from "../../form-schemas/edit-profile-pic-schema";
 
 import Message from "../general/Message";
-import FormField from "../checkout/FormField";
 
 async function logout(){
   await API.delete("/token/delete", {
@@ -28,16 +25,25 @@ async function logout(){
 const ViewProfile = () => {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
-    
+  
+  const editProfilePic = useRef(null);
+  const err = useRef(null);
+  
+  const [file, setFile] = useState(""); 
   const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState();
   const [color, setColor] = useState();
 
-  const editProfilePic = useRef(null);
+  const onSubmit = useCallback(async function (e){
+    e.preventDefault();
+  
+    if(!file){
+      err.current.classList.toggle("hide"); 
+      return;  
+    }
 
-  const onSubmit = useCallback(async function ({ profilePic }){  
     await API.patch("/profile/edit/profile-pic", {
-      profilePic,
+      profilePic: file,
       email: user.email,
     }, 
     { 
@@ -62,21 +68,7 @@ const ViewProfile = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     });
-  }, [])
-
-  const { errors, handleBlur, handleSubmit, touched, isSubmitting, setFieldValue } = useFormik({
-    initialValues: {
-      profilePic: "",
-    },
-    validationSchema: editProfilePicSchema,
-    onSubmit: onSubmit,
-  });
-
-  // Should I memoize it or not?
-  const handleFileChange = (event) => {
-    const file = event.currentTarget.files[0];
-    setFieldValue("profilePic", file);
-  };
+  }, [file])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant"});
@@ -111,28 +103,11 @@ const ViewProfile = () => {
       </div>
       <div ref={editProfilePic} className="edit-profile-pic hide">
         <img src={require("../../images/cross.png")} alt="cross.png" className="icon" onClick={ () => { editProfilePic.current.classList.toggle("hide"); } } />
-        <form 
-          onSubmit={handleSubmit}
-          autoComplete="off"
-          className={isSubmitting ? "disabled" : ""}
-          encType="multipart/form-data">
-          <FormField
-            label="Profile Picture"
-            type="file"
-            accept="image/*"
-            id="profilePic"
-            className={
-              errors.profilePic && touched.profilePic ? "input-error" : ""
-            }
-            value={undefined}
-            onChange={handleFileChange}
-            onBlur={handleBlur}
-            error={
-              errors.profilePic && touched.profilePic
-                ? errors.profilePic
-                : false
-            }
+        <form onSubmit={onSubmit} encType="multipart/form-data">
+          <input type="file" accept="image/*" name="profilePic" id="profilePic" 
+          onChange={(e) => { setFile(e.target.files[0]); }}
           />
+          <p  ref={err} className="err hide">Please select an image</p>
           <button type="submit">Submit</button>
         </form>
       </div>
