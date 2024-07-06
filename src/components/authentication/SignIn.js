@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useState } from "react";
 import Message from "../general/Message";
 import useUserStore from "../../hooks/userStore";
+import { GoogleLogin } from '@react-oauth/google';
 
 const SignIn = () => {
   const history = useHistory();
@@ -35,6 +36,23 @@ const SignIn = () => {
         setColor("red");
         setDisplay(true);
         setTimeout(() => {setDisplay(false)}, 1200);
+      }
+    })
+    .catch((err) => {
+      console.log("An error occurred!", err);
+    })
+  }
+
+  async function handleGoogleSignIn(credential){
+    await axios.post("http://localhost:8000/sign-in/google", {
+      credential
+    }, { headers: { 'Content-Type': 'application/json' }, 
+    withCredentials: true})
+    .then((res) => {
+      if(res.data.success){
+        history.push("/");
+        console.log(res.data.user);
+        setUser(res.data.user);
       }
     })
     .catch((err) => {
@@ -112,6 +130,16 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        <div className="google-login">
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              handleGoogleSignIn(credentialResponse.credential);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+        </div>
       </div>
     </div>
   );

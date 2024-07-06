@@ -27,3 +27,9 @@
   margin: 0 auto;
   margin-bottom: 2.5em;
 }
+
+.sign-in-form .google-login{
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+}

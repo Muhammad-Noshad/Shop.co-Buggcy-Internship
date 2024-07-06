@@ -50,7 +50,7 @@ const EditPersonalInfo = () => {
       firstName: user.firstName,
       lastName: user.lastName,
       phoneNo: user.phoneNo,
-      dateOfBirth: user.dateOfBirth.split("T")[0],
+      dateOfBirth: user.dateOfBirth?.split("T")[0],
     },
     validationSchema: editPersonalInfoSchema,
     onSubmit: onSubmit,

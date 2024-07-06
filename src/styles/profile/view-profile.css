@@ -1,3 +1,45 @@
+.edit-profile-pic{
+  position: fixed;
+  width: 80%;
+  background-color: #F2F1F0;
+  padding: 2em 0;
+  border-radius: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.edit-profile-pic button{
+  display: block;
+  margin-top: 1.5em;
+  padding: 0.5em 3em;
+  border-radius: 25px;
+}
+
+.edit-profile-pic .icon{
+  width: 2.5rem;
+  right: 1.5%;
+  top: 5%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.edit-profile-pic .err{
+  margin-top: 0.5em;
+  color: red;
+}
+
+.icon:hover{
+  opacity: 0.75;
+}
+
+.icon:active{
+  opacity: 0.45;
+}
+
+.hide{
+  display: none;
+}
+
 .view-profile{
   margin-top: 9em;
 }

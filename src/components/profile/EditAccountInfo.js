@@ -22,7 +22,8 @@ const EditAccountInfo = () => {
       oldPassword,
       newEmail,
       newPassword,
-    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    withCredentials: true
     })
     .then((res) => {
       setMessage(res.data.message);
