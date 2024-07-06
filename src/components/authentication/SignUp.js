@@ -15,7 +15,7 @@ const SignUp = () => {
   const [color, setColor] = useState('');
 
   async function onSubmit({ firstName, lastName, phoneNo, dateOfBirth, profilePic, email, password }){
-    await axios.post("http://localhost:8000/sign-up", {
+    await axios.post("http://localhost:8000/user/sign-up", {
       firstName,
       lastName,
       phoneNo,

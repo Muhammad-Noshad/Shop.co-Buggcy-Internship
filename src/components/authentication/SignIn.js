@@ -20,7 +20,7 @@ const SignIn = () => {
   const setUser = useUserStore((state) => state.setUser);
 
   async function onSubmit({ email, password }){
-    await axios.post("http://localhost:8000/sign-in", {
+    await axios.post("http://localhost:8000/user/sign-in", {
       email,
       password
     }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -44,7 +44,7 @@ const SignIn = () => {
   }
 
   async function handleGoogleSignIn(credential){
-    await axios.post("http://localhost:8000/sign-in/google", {
+    await axios.post("http://localhost:8000/user/sign-in/google", {
       credential
     }, { headers: { 'Content-Type': 'application/json' }, 
     withCredentials: true})
