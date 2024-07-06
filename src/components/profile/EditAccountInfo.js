@@ -1,29 +1,37 @@
 import "../../styles/profile/edit-account-info.css";
 import "../../styles/general/form.css";
 
+import { useState, useEffect, useCallback } from "react";
+
+import API from "../../hooks/useAPI";
 import { useFormik } from "formik";
-import { EditAccountInfoSchema } from "../../form-schemas/edit-account-info-schema";
-import FormField from "../checkout/FormField";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import Message from "../general/Message";
+
 import useUserStore from "../../hooks/userStore";
+import { Link } from "react-router-dom";
+import { EditAccountInfoSchema } from "../../form-schemas/edit-account-info-schema";
+
+import Message from "../general/Message";
+import FormField from "../checkout/FormField";
 
 const EditAccountInfo = () => {
-  const [display, setDisplay] = useState(false);
-  const [message, setMessage] = useState('');
-  const [color, setColor] = useState('');
   const setUser = useUserStore((state) => state.setUser);
 
-  async function onSubmit({ oldEmail, oldPassword, newEmail, newPassword }){
-    await axios.patch("http://localhost:8000/profile/edit/account-info", {
+  const [message, setMessage] = useState('');
+  const [color, setColor] = useState('');
+  const [display, setDisplay] = useState(false);
+
+  const onSubmit = useCallback(async function({ oldEmail, oldPassword, newEmail, newPassword }){
+    await API.patch("/profile/edit/account-info", {
       oldEmail,
       oldPassword,
       newEmail,
       newPassword,
-    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    withCredentials: true
+    }, 
+    { 
+      headers: { 
+        'Content-Type': 'application/x-www-form-urlencoded' 
+      },
+      withCredentials: true
     })
     .then((res) => {
       setMessage(res.data.message);
@@ -40,7 +48,7 @@ const EditAccountInfo = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     })
-  }
+  }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant"});
@@ -55,7 +63,7 @@ const EditAccountInfo = () => {
     },
     validationSchema: EditAccountInfoSchema,
     onSubmit: onSubmit,
-  });
+  })
 
   return (
     <div className="edit-account-info">

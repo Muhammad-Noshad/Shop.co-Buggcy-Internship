@@ -1,31 +1,39 @@
 import "../../styles/profile/edit-profile.css";
 import "../../styles/general/form.css";
-import Message from "../general/Message";
 
+import { useState, useEffect, useCallback } from "react";
 
 import { useFormik } from "formik";
-import { editPersonalInfoSchema } from "../../form-schemas/edit-personal-info-schema";
-import FormField from "../checkout/FormField";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import useUserStore from "../../hooks/userStore";
+import API from "../../hooks/useAPI";
+
+import { Link } from "react-router-dom";
+import { editPersonalInfoSchema } from "../../form-schemas/edit-personal-info-schema";
+
+import FormField from "../checkout/FormField";
+import Message from "../general/Message";
 
 const EditPersonalInfo = () => {
-  const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
+  const [display, setDisplay] = useState(false);
+
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
 
-  async function onSubmit({ firstName, lastName, phoneNo, dateOfBirth }){
-    await axios.patch("http://localhost:8000/profile/edit/personal-info", {
+  const onSubmit = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth }){
+    await API.patch("/profile/edit/personal-info", {
       firstName,
       lastName,
       phoneNo,
       dateOfBirth,
       email: user.email,
-    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
+    }, 
+    { 
+      headers: { 
+        'Content-Type': 'application/x-www-form-urlencoded' 
+      }
+    })
     .then((res) => {
       setMessage(res.data.message);
       if(res.data.success){
@@ -43,7 +51,7 @@ const EditPersonalInfo = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     });
-  }
+  }, [])
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {

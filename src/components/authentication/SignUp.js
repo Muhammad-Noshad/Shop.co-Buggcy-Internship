@@ -1,21 +1,23 @@
 import "../../styles/authentication/sign-up.css";
 import "../../styles/general/form.css";
-import Message from "../general/Message";
 
+import { useState, useCallback } from "react";
+
+import { Link } from "react-router-dom";
+import API from "../../hooks/useAPI";
 import { useFormik } from "formik";
 import { signUpFormSchema } from "../../form-schemas/sign-up-form-schema";
+
 import FormField from "../checkout/FormField";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import Message from "../general/Message";
 
 const SignUp = () => {
-  const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
+  const [display, setDisplay] = useState(false);
 
-  async function onSubmit({ firstName, lastName, phoneNo, dateOfBirth, profilePic, email, password }){
-    await axios.post("http://localhost:8000/user/sign-up", {
+  const handleUserSignUp = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth, profilePic, email, password }){
+    await API.post("/user/sign-up", {
       firstName,
       lastName,
       phoneNo,
@@ -23,7 +25,11 @@ const SignUp = () => {
       profilePic,
       email,
       password
-    }, { headers: { 'Content-Type': 'multipart/form-data' }})
+    }, 
+    { 
+      headers: { 
+      'Content-Type': 'multipart/form-data' }
+    })
     .then((res) => {
       setMessage(res.data.message);
       if(res.data.success){
@@ -38,7 +44,7 @@ const SignUp = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     })
-  }
+  }, []);
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting, setFieldValue } = useFormik({
     initialValues: {
@@ -52,9 +58,10 @@ const SignUp = () => {
       confirmPassword: "",
     },
     validationSchema: signUpFormSchema,
-    onSubmit: onSubmit,
+    onSubmit: handleUserSignUp,
   });
 
+  // Should I memoize it or not?
   const handleFileChange = (event) => {
     const file = event.currentTarget.files[0];
     setFieldValue("profilePic", file);

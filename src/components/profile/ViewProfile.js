@@ -1,12 +1,15 @@
 import "../../styles/profile/view-profile.css";
+
+import { useEffect, useRef, useState, useCallback } from "react";
+
 import useUserStore from "../../hooks/userStore";
-import axios from "axios";
+import API from "../../hooks/useAPI";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+
 import Message from "../general/Message";
 
-async function deleteToken(){
-  await axios.delete("http://localhost:8000/token/delete", {
+async function logout(){
+  await API.delete("/token/delete", {
     withCredentials: true
   })
   .then((res) => {
@@ -22,15 +25,16 @@ async function deleteToken(){
 const ViewProfile = () => {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
+  
   const editProfilePic = useRef(null);
   const err = useRef(null);
+  
   const [file, setFile] = useState(""); 
   const [display, setDisplay] = useState(false);
   const [message, setMessage] = useState();
   const [color, setColor] = useState();
 
-
-  async function onSubmit(e){
+  const onSubmit = useCallback(async function (e){
     e.preventDefault();
   
     if(!file){
@@ -38,10 +42,15 @@ const ViewProfile = () => {
       return;  
     }
 
-    await axios.patch("http://localhost:8000/profile/edit/profile-pic", {
+    await API.patch("/profile/edit/profile-pic", {
       profilePic: file,
       email: user.email,
-    }, { headers: { 'Content-Type': 'multipart/form-data' }})
+    }, 
+    { 
+      headers: { 
+        'Content-Type': 'multipart/form-data' 
+      }
+    })
     .then((res) => {
       setMessage(res.data.message);
       if(res.data.success){
@@ -59,7 +68,7 @@ const ViewProfile = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     });
-  }
+  }, [file])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant"});
@@ -90,7 +99,7 @@ const ViewProfile = () => {
         <Link className={ user.phoneNo? "" : "hide" } to="/profile/edit-account-info">
           <button>Edit Account Info</button>
         </Link>
-        <button onClick={deleteToken}>Logout</button>
+        <button onClick={logout}>Logout</button>
       </div>
       <div ref={editProfilePic} className="edit-profile-pic hide">
         <img src={require("../../images/cross.png")} alt="cross.png" className="icon" onClick={ () => { editProfilePic.current.classList.toggle("hide"); } } />

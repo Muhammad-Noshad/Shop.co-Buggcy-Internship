@@ -3,7 +3,9 @@ import "./styles/general/general.css"
 import { Route, Switch, useLocation } from "react-router-dom";
 
 import useSWR from "swr";
-import useFetch from "./hooks/useFetch";
+
+import useSetupCart from "./hooks/useSetupCart";
+import { useVerifyToken } from "./hooks/useVerifyToken";
 
 import Header from './components/general/Header';
 import Hero from "./components/home/Hero";
@@ -20,11 +22,9 @@ import Error from "./components/general/Error";
 import SignIn from "./components/authentication/SignIn";
 import SignUp from "./components/authentication/SignUp";
 import ViewProfile from "./components/profile/ViewProfile";
-
-import useSetupCart from "./hooks/useSetupCart";
-import { useVerifyToken } from "./hooks/useVerifyToken";
 import EditPersonalInfo from "./components/profile/EditPersonalInfo";
 import EditAccountInfo from "./components/profile/EditAccountInfo";
+import useFetchProducts from "./hooks/useFetchProducts";
 
 function App() {
   useSetupCart();
@@ -33,7 +33,7 @@ function App() {
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
 
-  const { data: products, error } = useSWR("/products", useFetch);
+  const { data: products, error } = useSWR("/products", useFetchProducts);
 
   if(error)
     return (<Error />);

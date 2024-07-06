@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import useUserStore from "./userStore";
 import { useHistory, useLocation } from "react-router-dom";
-import axios from "axios";
+import useUserStore from "./userStore";
+import API from "./useAPI";
 
 export const useVerifyToken = () => {
   const setUser = useUserStore((state) => state.setUser);
@@ -10,7 +10,7 @@ export const useVerifyToken = () => {
 
   useEffect(() => {
     async function verifyToken(){
-      await axios.get("http://localhost:8000/token/verify", {
+      await API.get("/token/verify", {
         withCredentials: true
       })
       .then((res) => {

@@ -1,30 +1,39 @@
 import "../../styles/authentication/sign-in.css";
 import "../../styles/general/form.css";
 
-import { useFormik } from "formik";
-import { signInFormSchema } from "../../form-schemas/sign-in-form-schema";
-import FormField from "../checkout/FormField";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { useState, useCallback } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
-import Message from "../general/Message";
-import useUserStore from "../../hooks/userStore";
+import { Link } from "react-router-dom";
+
+import { useFormik } from "formik";
 import { GoogleLogin } from '@react-oauth/google';
+
+import API from "../../hooks/useAPI";
+import useUserStore from "../../hooks/userStore";
+import { signInFormSchema } from "../../form-schemas/sign-in-form-schema";
+
+import FormField from "../checkout/FormField";
+import Message from "../general/Message";
 
 const SignIn = () => {
   const history = useHistory();
-  const [display, setDisplay] = useState(false);
+  const setUser = useUserStore((state) => state.setUser);
+  
   const [message, setMessage] = useState('');
   const [color, setColor] = useState('');
-  const setUser = useUserStore((state) => state.setUser);
+  const [display, setDisplay] = useState(false);
 
-  async function onSubmit({ email, password }){
-    await axios.post("http://localhost:8000/user/sign-in", {
+  const handleUserSignIn = useCallback(async function({ email, password }){
+    await API.post("/user/sign-in", {
       email,
       password
-    }, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  withCredentials: true})
+    }, 
+    { 
+      headers: { 
+        'Content-Type': 'application/x-www-form-urlencoded' 
+      },
+      withCredentials: true
+    })
     .then((res) => {
       if(res.data.success){
         history.push("/");
@@ -41,24 +50,28 @@ const SignIn = () => {
     .catch((err) => {
       console.log("An error occurred!", err);
     })
-  }
+  }, []);
 
-  async function handleGoogleSignIn(credential){
-    await axios.post("http://localhost:8000/user/sign-in/google", {
+  const handleGoogleSignIn = useCallback(async function(credential){
+    await API.post("/user/sign-in/google", {
       credential
-    }, { headers: { 'Content-Type': 'application/json' }, 
-    withCredentials: true})
+    }, 
+    {
+      headers:{ 
+        'Content-Type': 'application/json' 
+      }, 
+      withCredentials: true
+    })
     .then((res) => {
       if(res.data.success){
         history.push("/");
-        console.log(res.data.user);
         setUser(res.data.user);
       }
     })
     .catch((err) => {
       console.log("An error occurred!", err);
     })
-  }
+  }, []);
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {
@@ -66,7 +79,7 @@ const SignIn = () => {
       password: "",
     },
     validationSchema: signInFormSchema,
-    onSubmit: onSubmit,
+    onSubmit: handleUserSignIn,
   });
 
   return (
