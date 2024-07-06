@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 
 import { useFormik } from "formik";
-import { GoogleLogin } from '@react-oauth/google';
 
 import API from "../../hooks/useAPI";
 import useUserStore from "../../hooks/userStore";
@@ -14,6 +13,7 @@ import { signInFormSchema } from "../../form-schemas/sign-in-form-schema";
 
 import FormField from "../checkout/FormField";
 import Message from "../general/Message";
+import GoogleLogIn from "./GoogleLogIn";
 
 const SignIn = () => {
   const history = useHistory();
@@ -45,27 +45,6 @@ const SignIn = () => {
         setColor("red");
         setDisplay(true);
         setTimeout(() => {setDisplay(false)}, 1200);
-      }
-    })
-    .catch((err) => {
-      console.log("An error occurred!", err);
-    })
-  }, []);
-
-  const handleGoogleSignIn = useCallback(async function(credential){
-    await API.post("/user/sign-in/google", {
-      credential
-    }, 
-    {
-      headers:{ 
-        'Content-Type': 'application/json' 
-      }, 
-      withCredentials: true
-    })
-    .then((res) => {
-      if(res.data.success){
-        history.push("/");
-        setUser(res.data.user);
       }
     })
     .catch((err) => {
@@ -144,16 +123,7 @@ const SignIn = () => {
           </button>
         </form>
         <p className="title">OR</p>
-        <div className="google-login">
-          <GoogleLogin
-            onSuccess={credentialResponse => {
-              handleGoogleSignIn(credentialResponse.credential);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />
-        </div>
+        <GoogleLogIn />
       </div>
     </div>
   );
