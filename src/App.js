@@ -1,5 +1,6 @@
 import "./styles/general/general.css"
 
+import { useEffect } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 
 import useSWR from "swr";
@@ -29,10 +30,12 @@ import useFetchProducts from "./hooks/useFetchProducts";
 function App() {
   useSetupCart();
   useVerifyToken();
-
+  
   const location = useLocation();
   const showHeaderAndFooter = location.pathname !== '/sign-in' && location.pathname !== '/sign-up';
 
+  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), [location]);
+  
   const { data: products, error } = useSWR("/products", useFetchProducts);
 
   if(error)

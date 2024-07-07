@@ -1,7 +1,7 @@
 import "../../styles/profile/edit-profile.css";
 import "../../styles/general/form.css";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import { useFormik } from "formik";
 import useUserStore from "../../hooks/userStore";
@@ -66,12 +66,6 @@ const EditPersonalInfo = () => {
     validationSchema: editPersonalInfoSchema,
     onSubmit: onSubmit,
   });
-
-  console.log("Values", values.gender);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant"});
-  }, []);
 
   return (
     <div className="edit-profile">

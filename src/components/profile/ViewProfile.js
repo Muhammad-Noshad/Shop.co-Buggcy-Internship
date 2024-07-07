@@ -1,6 +1,6 @@
 import "../../styles/profile/view-profile.css";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import useUserStore from "../../hooks/userStore";
 import API from "../../hooks/useAPI";
@@ -26,10 +26,6 @@ const ViewProfile = () => {
   const user = useUserStore((state) => state.user);
 
   const editProfilePic = useRef(null);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant"});
-  }, []);
 
   return (
     <div className="view-profile container">

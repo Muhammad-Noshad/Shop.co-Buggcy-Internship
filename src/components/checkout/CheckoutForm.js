@@ -1,7 +1,7 @@
 import "../../styles/checkout/checkout-form.css";
 import "../../styles/general/form.css";
 
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { useFormik } from "formik";
 import useCartStore from "../../hooks/useCartStore";
 
@@ -31,10 +31,6 @@ const CheckoutForm = ({ isSubmitted, setIsSubmitted }) => {
     validationSchema: checkoutFormSchema,
     onSubmit: onSubmit,
   });
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
 
   return (
     <div className="checkout-form">

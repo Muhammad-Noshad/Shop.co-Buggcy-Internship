@@ -1,14 +1,12 @@
 import "../../styles/checkout/checkout.css";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import OrderSummary from '../cart/OrderSummary'
 import CheckoutForm from "./CheckoutForm";
 
 const Checkout = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
 
   return (  
     <div className="checkout container">

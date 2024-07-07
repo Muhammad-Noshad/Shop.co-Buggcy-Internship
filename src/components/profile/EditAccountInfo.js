@@ -1,7 +1,7 @@
 import "../../styles/profile/edit-account-info.css";
 import "../../styles/general/form.css";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import API from "../../hooks/useAPI";
 import { useFormik } from "formik";
@@ -49,10 +49,6 @@ const EditAccountInfo = () => {
       console.log("An error occurred!", err);
     })
   }, [])
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant"});
-  }, []);
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {

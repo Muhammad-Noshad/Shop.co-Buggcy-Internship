@@ -25,8 +25,6 @@ const ProductDetails = ({ products }) => {
     setIsAddedToCart(true);
     setTimeout(() => {setIsAddedToCart(false)}, 1200);
   }, [product, count])
-  
-  useEffect(() => window.scrollTo({ top: 0, behavior: "instant" }), []);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));

@@ -12,8 +12,6 @@ const ViewProducts = ({ products }) => {
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-
     const buttons = categoriesElem.current.children;
 
     const handleButtonClick = (index) => {

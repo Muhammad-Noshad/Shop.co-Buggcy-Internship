@@ -1,7 +1,7 @@
 import "../../styles/authentication/sign-up.css";
 import "../../styles/general/form.css";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 import { Link } from "react-router-dom";
 import API from "../../hooks/useAPI";
@@ -63,10 +63,6 @@ const SignUp = () => {
     validationSchema: signUpFormSchema,
     onSubmit: handleUserSignUp,
   });
-
-  useEffect(() => {
-    console.log(values.gender);
-  }, [values.gender]);
 
   // Should I memoize it or not?
   const handleFileChange = (event) => {
