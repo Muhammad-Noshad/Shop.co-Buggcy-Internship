@@ -7,4 +7,5 @@ export const editPersonalInfoSchema = yup.object().shape({
   dateOfBirth: yup.date().test('LessThanToday', `Date of birth should be smaller than ${(new Date).toLocaleDateString("en-GB")}`, (value) => {
     return value <= new Date;
   }).required("Date of Birth is a required field"),
+  gender: yup.string().required(),
 })

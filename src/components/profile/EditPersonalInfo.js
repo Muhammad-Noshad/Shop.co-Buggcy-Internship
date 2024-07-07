@@ -10,6 +10,7 @@ import API from "../../hooks/useAPI";
 import { Link } from "react-router-dom";
 import { editPersonalInfoSchema } from "../../form-schemas/edit-personal-info-schema";
 
+import RadioField from "../checkout/RadioField";
 import FormField from "../checkout/FormField";
 import Message from "../general/Message";
 
@@ -21,12 +22,13 @@ const EditPersonalInfo = () => {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
 
-  const onSubmit = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth }){
+  const onSubmit = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth, gender }){
     await API.patch("/profile/edit/personal-info", {
       firstName,
       lastName,
       phoneNo,
       dateOfBirth,
+      gender,
       email: user.email,
     }, 
     { 
@@ -59,10 +61,13 @@ const EditPersonalInfo = () => {
       lastName: user.lastName,
       phoneNo: user.phoneNo,
       dateOfBirth: user.dateOfBirth?.split("T")[0],
+      gender: user.gender,
     },
     validationSchema: editPersonalInfoSchema,
     onSubmit: onSubmit,
   });
+
+  console.log("Values", values.gender);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant"});
@@ -142,6 +147,22 @@ const EditPersonalInfo = () => {
                   : false
               }
             />
+            <RadioField
+            mainLabel="Gender"
+            name="gender"
+            formikValue={ values.gender }
+            className={
+              errors.gender && touched.gender ? "radio-error" : ""
+            }
+            radioValues={['male', 'female']}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={
+              errors.gender && touched.gender
+                ? errors.gender
+                : false
+            }
+          />
             <Link to="/profile">
               <p
                 style={{

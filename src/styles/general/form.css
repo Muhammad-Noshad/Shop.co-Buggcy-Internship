@@ -22,6 +22,17 @@ form .field + .field{
   margin-top: 1.5em;
 }
 
+form .radio{
+  justify-content: space-between;
+}
+
+form .radio-options{
+  display: flex;
+  gap: 8em;
+  flex: 2;
+  text-transform: capitalize;
+}
+
 form input{
   border: 0.5px solid rgba(0, 0, 0, 0.25);
   border-radius: 1em;
@@ -44,6 +55,12 @@ form button{
 
 input.input-error{
   border: 2px solid red;
+}
+
+.radio-error{
+  border: 2px solid red;
+  padding: 0.7em;
+  border-radius: 15px;
 }
 
 .error-message{

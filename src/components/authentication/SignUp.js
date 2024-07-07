@@ -1,13 +1,14 @@
 import "../../styles/authentication/sign-up.css";
 import "../../styles/general/form.css";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import API from "../../hooks/useAPI";
 import { useFormik } from "formik";
 import { signUpFormSchema } from "../../form-schemas/sign-up-form-schema";
 
+import RadioField from "../checkout/RadioField";
 import FormField from "../checkout/FormField";
 import Message from "../general/Message";
 
@@ -16,12 +17,13 @@ const SignUp = () => {
   const [color, setColor] = useState('');
   const [display, setDisplay] = useState(false);
 
-  const handleUserSignUp = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth, profilePic, email, password }){
+  const handleUserSignUp = useCallback(async function({ firstName, lastName, phoneNo, dateOfBirth, gender, profilePic, email, password }){
     await API.post("/user/sign-up", {
       firstName,
       lastName,
       phoneNo,
       dateOfBirth,
+      gender,
       profilePic,
       email,
       password
@@ -52,6 +54,7 @@ const SignUp = () => {
       lastName: "",
       phoneNo: "",
       dateOfBirth: "",
+      gender: "",
       profilePic: "",
       email: "",
       password: "",
@@ -60,6 +63,10 @@ const SignUp = () => {
     validationSchema: signUpFormSchema,
     onSubmit: handleUserSignUp,
   });
+
+  useEffect(() => {
+    console.log(values.gender);
+  }, [values.gender]);
 
   // Should I memoize it or not?
   const handleFileChange = (event) => {
@@ -137,6 +144,21 @@ const SignUp = () => {
             error={
               errors.dateOfBirth && touched.dateOfBirth
                 ? errors.dateOfBirth
+                : false
+            }
+          />
+          <RadioField
+            mainLabel="Gender"
+            name="gender"
+            className={
+              errors.gender && touched.gender ? "radio-error" : ""
+            }
+            radioValues={['male', 'female']}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={
+              errors.gender && touched.gender
+                ? errors.gender
                 : false
             }
           />

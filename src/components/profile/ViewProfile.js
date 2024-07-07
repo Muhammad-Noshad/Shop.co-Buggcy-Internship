@@ -24,7 +24,6 @@ async function logout(){
 
 const ViewProfile = () => {
   const user = useUserStore((state) => state.user);
-  console.log("ViewProfile", user);
 
   const editProfilePic = useRef(null);
 
@@ -35,8 +34,8 @@ const ViewProfile = () => {
   return (
     <div className="view-profile container">
       <div className="left-section">
-        <img src={require("../../images/edit.png")} alt="edit.png" className="icon" onClick={() => { editProfilePic.current.classList.toggle("hide"); }} />
         <img src={user.profilePic} alt="profile.png" className="profile-img" />
+        <img src={require("../../images/edit.png")} alt="edit.png" className="icon" onClick={() => { editProfilePic.current.classList.toggle("hide"); }} />
       </div>
       <div className="right-section">
         <h1>{`${user.firstName} ${user.lastName}`}</h1>
@@ -46,6 +45,10 @@ const ViewProfile = () => {
         <p>{user.phoneNo || "Not Specified"}</p>
         <label>Date of Birth:</label>
         <p>{user.dateOfBirth?.split("T")[0] || "Not Specified"}</p>
+        <label>Gender:</label>
+        <p style={{ "textTransform": "capitalize" }}>
+          {user.gender || "Not Specified"}
+        </p>
       </div>
       <div className="bottom-section">
         <Link to="/profile/edit-personal-info">
