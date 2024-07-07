@@ -1,5 +1,5 @@
-import "../../styles/authentication/sign-in.css";
 import "../../styles/general/form.css";
+import "../../styles/general/forms-shared.css";
 
 import { useState, useCallback } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -62,8 +62,11 @@ const SignIn = () => {
   });
 
   return (
-    <div className="sign-in-wrapper container">
-      <div className="sign-in-form">
+    <div className="wrapper container" style={{
+      "height": "100vh",
+      "alignItems": "center",
+    }}>
+      <div className="form-section">
         {display && <Message message={message} color={color} />}
         <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
         <h1>Welcome Back👋</h1>
@@ -73,7 +76,7 @@ const SignIn = () => {
             marginBottom: "2em",
           }}
         >
-          Sign in to continue{" "}
+          Sign in to continue
         </p>
         <form
           onSubmit={handleSubmit}
@@ -122,7 +125,15 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-        <p className="title">OR</p>
+        <p style={{
+          "fontWeight": "700",
+          "textAlign": "center",
+          "marginTop": "1em",
+          "paddingBottom": "0.5em",
+          "borderBottom": "1px solid rgba(0, 0, 0, 0.12)",
+        }}>
+          OR
+        </p>
         <GoogleLogIn />
       </div>
     </div>

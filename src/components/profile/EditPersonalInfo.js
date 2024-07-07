@@ -1,5 +1,6 @@
 import "../../styles/profile/edit-profile.css";
 import "../../styles/general/form.css";
+import "../../styles/general/forms-shared.css";
 
 import { useState, useCallback } from "react";
 
@@ -68,9 +69,9 @@ const EditPersonalInfo = () => {
   });
 
   return (
-    <div className="edit-profile">
-      <div className="sign-up-wrapper">
-        <div className="sign-up-form">
+    <div className="edit-profile container">
+      <div className="wrapper">
+        <div className="form-section">
           {display && <Message message={message} color={color} />}
           <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
           <h1>Edit Personal Info📝</h1>

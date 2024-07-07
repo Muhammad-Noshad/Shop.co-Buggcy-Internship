@@ -1,5 +1,5 @@
-import "../../styles/authentication/sign-up.css";
 import "../../styles/general/form.css";
+import "../../styles/general/forms-shared.css";
 
 import { useState, useCallback } from "react";
 
@@ -70,8 +70,8 @@ const SignUp = () => {
   }, [])
 
   return (
-    <div className="sign-up-wrapper container">
-      <div className="sign-up-form">
+    <div className="wrapper container">
+      <div className="form-section">
         {display && <Message message={message} color={color} />}
         <img src={require("../../images/shop-co.png")} alt="shop-co.png" />
         <h1>Welcome👋</h1>
