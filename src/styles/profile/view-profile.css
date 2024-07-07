@@ -16,6 +16,7 @@
 
 .view-profile .left-section .profile-img{
   height: 35rem;
+  width: 35rem;
   border-radius: 100%;
 }
 
@@ -64,19 +65,22 @@
 }
 
 @media (max-width: 650px) {
-  .view-profile .left-section img{
+  .view-profile .left-section .profile-img{
     height: 30rem;
+    width: 30rem;
   }
 }
 
 @media (max-width: 550px) {
-  .view-profile .left-section img{
+  .view-profile .left-section .profile-img{
     height: 25rem;
+    width: 25rem;
   }
 }
 
 @media (max-width: 400px) {
-  .view-profile .left-section img{
+  .view-profile .left-section .profile-img{
     height: 20rem;
+    width: 20rem;
   }
 }
