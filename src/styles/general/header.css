@@ -58,6 +58,10 @@ header .right-section img{
   width: 2.5rem;
 }
 
+header .profile-icon{
+  border-radius: 100%;
+}
+
 header .right-section a:last-of-type{
   margin-left: 2.5em;
 }

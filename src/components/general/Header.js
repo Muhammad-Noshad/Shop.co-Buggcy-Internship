@@ -1,10 +1,12 @@
 import "../../styles/general/header.css"
 
 import { useState, useEffect, useCallback } from "react";
+import useUserStore from "../../hooks/userStore";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [search, setSearch] = useState('');
+  const user = useUserStore((state) => state.user);
   const history = useHistory();
   const key = useLocation().pathname.split('/');
 
@@ -41,7 +43,7 @@ const Header = () => {
            <img src={require("../../images/cart.png")} alt="cart.png" />
           </Link>
           <Link to="/profile">
-           <img src={require("../../images/profile.png")} alt="profile.png" />
+           <img src={user? user.profilePic : require("../../images/profile.png")} className="profile-icon" alt="profile.png" />
           </Link>
         </div>
       </div>
