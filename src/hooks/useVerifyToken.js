@@ -10,8 +10,12 @@ export const useVerifyToken = () => {
 
   useEffect(() => {
     async function verifyToken(){
+      const controller = new AbortController();
+      const signal = controller.signal;
+
       await API.get("/token/verify", {
-        withCredentials: true
+        withCredentials: true,
+        signal: signal,
       })
       .then((res) => {
         if(res.data.isAuthenticated){
@@ -24,12 +28,15 @@ export const useVerifyToken = () => {
         }
       })
       .catch((err) => {
-        console.log("An error occurred!", err);
+        if(err.message !== "Request aborted")
+          console.log("An error occurred!", err);
       })
     }
 
     verifyToken();
 
-    // Use abort controller in cleanup function
+    return () => {
+      controller.abort();
+    }
   }, []);
 }
