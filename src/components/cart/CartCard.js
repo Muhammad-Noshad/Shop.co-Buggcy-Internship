@@ -1,7 +1,7 @@
 import "../../styles/cart/cart-card.css";
 
 import { useEffect, useState, useCallback } from "react";
-import useCartStore from "../../hooks/cartStore";
+import useCartStore from "../../hooks/useCartStore";
 
 import Rating from "../general/Rating";
 import Counter from "../general/Counter";

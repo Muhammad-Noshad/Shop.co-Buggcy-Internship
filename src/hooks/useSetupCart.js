@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useCartStore from "./cartStore";
+import useCartStore from "./useCartStore";
 
 export const useSetupCart = () => {
   const setCart = useCartStore((state) => state.setCart);

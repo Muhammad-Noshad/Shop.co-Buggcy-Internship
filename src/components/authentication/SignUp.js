@@ -75,7 +75,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="sign-up-wrapper">
+    <div className="sign-up-wrapper container">
       <div className="sign-up-form">
         {display && <Message message={message} color={color} />}
         <img src={require("../../images/shop-co.png")} alt="shop-co.png" />

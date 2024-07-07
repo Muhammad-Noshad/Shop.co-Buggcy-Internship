@@ -66,3 +66,23 @@ header .profile-icon{
 header .right-section a:last-of-type{
   margin-left: 2.5em;
 }
+
+header .right-section{
+  position: relative;
+}
+
+header .right-section .cart-length{
+  color: #FFFFFF;
+  background-color: #d70808;
+  
+  width: 3rem;
+  padding: 0.25em;
+  scale: 0.7;
+  
+  text-align: center;
+  border-radius: 50%;
+
+  position: absolute;
+  left: -2%;
+  top: -80%;
+}

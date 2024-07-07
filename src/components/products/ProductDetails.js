@@ -2,7 +2,7 @@ import "../../styles/products/product-details.css";
 
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import useCartStore from "../../hooks/cartStore"
+import useCartStore from "../../hooks/useCartStore"
 
 import Counter from "../general/Counter";
 import Message from "../general/Message";

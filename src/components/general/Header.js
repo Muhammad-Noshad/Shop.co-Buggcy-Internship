@@ -1,12 +1,19 @@
 import "../../styles/general/header.css"
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import useUserStore from "../../hooks/userStore";
+import useCartStore from "../../hooks/useCartStore";
 import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Header = () => {
-  const [search, setSearch] = useState('');
   const user = useUserStore((state) => state.user);
+  const cart = useCartStore((state) => state.cart);
+
+  const totalQuantity = cart.length && cart.reduce((accum, item) => {
+    return accum + item.quantity;
+  }, 0);  
+  
+  const [search, setSearch] = useState('');
   const history = useHistory();
   const key = useLocation().pathname.split('/');
 
@@ -40,10 +47,11 @@ const Header = () => {
         
         <div className="right-section">
           <Link to="/view-cart">
-           <img src={require("../../images/cart.png")} alt="cart.png" />
+            <p className="cart-length">{ totalQuantity }</p>
+            <img src={require("../../images/cart.png")} alt="cart.png" />
           </Link>
           <Link to="/profile">
-           <img src={user? user.profilePic : require("../../images/profile.png")} className="profile-icon" alt="profile.png" />
+            <img src={user? user.profilePic : require("../../images/profile.png")} className="profile-icon" alt="profile.png" />
           </Link>
         </div>
       </div>

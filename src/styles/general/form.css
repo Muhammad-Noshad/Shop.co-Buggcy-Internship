@@ -18,6 +18,10 @@ form .field{
   padding: 0 2em;
 }
 
+form input[type=file]{
+  width: 100%;
+}
+
 form .field + .field{
   margin-top: 1.5em;
 }
@@ -28,8 +32,10 @@ form .radio{
 
 form .radio-options{
   display: flex;
-  gap: 8em;
+  justify-content: space-evenly;
   flex: 2;
+  flex-wrap: wrap;
+
   text-transform: capitalize;
 }
 
@@ -49,8 +55,9 @@ form button{
   border-radius: 25px;
   padding: 0.5em 4em;
   margin-top: 2em;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input.input-error{
@@ -69,4 +76,17 @@ input.input-error{
   text-transform: capitalize;
   margin-left: 26%;
   margin-bottom: .5em;
+}
+
+@media (max-width: 590px){
+  form .field{
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+  
+  .error-message{
+    text-align: center;
+    margin-left: 0;
+  }
 }

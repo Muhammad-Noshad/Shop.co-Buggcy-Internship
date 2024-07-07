@@ -3,7 +3,7 @@ import "../../styles/general/form.css";
 
 import { useEffect, useCallback } from "react";
 import { useFormik } from "formik";
-import useCartStore from "../../hooks/cartStore";
+import useCartStore from "../../hooks/useCartStore";
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { checkoutFormSchema } from "../../form-schemas/checkout-form-schema";
