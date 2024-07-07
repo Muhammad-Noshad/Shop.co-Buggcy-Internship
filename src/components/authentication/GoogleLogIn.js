@@ -24,7 +24,6 @@ const GoogleLogIn = () => {
     })
     .then((res) => {
       if(res.data.success){
-        console.log("Initial", res.data.user);
         setUser(res.data.user);
         history.push("/");
       }

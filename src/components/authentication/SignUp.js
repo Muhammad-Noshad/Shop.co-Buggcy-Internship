@@ -64,11 +64,10 @@ const SignUp = () => {
     onSubmit: handleUserSignUp,
   });
 
-  // Should I memoize it or not?
-  const handleFileChange = (event) => {
-    const file = event.currentTarget.files[0];
+  const handleFileChange = useCallback((e) => {
+    const file = e.currentTarget.files[0];
     setFieldValue("profilePic", file);
-  };
+  }, [])
 
   return (
     <div className="sign-up-wrapper container">

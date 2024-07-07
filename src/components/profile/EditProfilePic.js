@@ -47,11 +47,10 @@ const EditProfilePic = forwardRef((props, ref) => {
     });
   }, [])
 
-  // Should I memoize it or not?
-  const handleFileChange = (event) => {
-    const file = event.currentTarget.files[0];
+  const handleFileChange = useCallback((e) => {
+    const file = e.currentTarget.files[0];
     setFieldValue("profilePic", file);
-  };
+  }, [])
 
   const { errors, handleBlur, handleSubmit, touched, isSubmitting, setFieldValue } = useFormik({
     initialValues: {
