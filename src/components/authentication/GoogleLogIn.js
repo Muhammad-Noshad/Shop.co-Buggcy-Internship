@@ -9,7 +9,6 @@ import API from "../../hooks/useAPI";
 
 const GoogleLogIn = () => {
   const setUser = useUserStore((state) => state.setUser);
-  const user = useUserStore((state) => state.user);
   const history = useHistory();
 
   const handleGoogleLogIn = useCallback(async function(credential){
