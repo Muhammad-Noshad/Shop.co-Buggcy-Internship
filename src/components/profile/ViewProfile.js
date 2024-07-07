@@ -36,7 +36,7 @@ const ViewProfile = () => {
     <div className="view-profile container">
       <div className="left-section">
         <img src={require("../../images/edit.png")} alt="edit.png" className="icon" onClick={() => { editProfilePic.current.classList.toggle("hide"); }} />
-        <img src={user.profilePic} alt="profile.png" />
+        <img src={user.profilePic} alt="profile.png" className="profile-img" />
       </div>
       <div className="right-section">
         <h1>{`${user.firstName} ${user.lastName}`}</h1>

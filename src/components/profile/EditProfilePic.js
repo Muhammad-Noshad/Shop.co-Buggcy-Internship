@@ -67,6 +67,15 @@ const EditProfilePic = forwardRef((props, ref) => {
         display && <Message message={message} color={color}/ >
       }
       <div ref={ ref } className="edit-profile-pic hide">
+          <h1 style={{textAlign: "center"}}>Edit Profile Pic📝</h1>
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: "2em",
+            }}
+          >
+            Please choose a new profile picture
+          </p>
         <img src={require("../../images/cross.png")} alt="cross.png" className={ isSubmitting ? "icon disabled" : "icon" } onClick={ () => { !isSubmitting?ref.current.classList.toggle("hide"):null } } />
           <form 
             onSubmit={handleSubmit}

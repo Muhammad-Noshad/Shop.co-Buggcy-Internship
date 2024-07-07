@@ -14,8 +14,9 @@
   position: relative;
 }
 
-.view-profile .left-section img{
+.view-profile .left-section .profile-img{
   height: 35rem;
+  border-radius: 100%;
 }
 
 .view-profile .left-section .icon{
@@ -23,9 +24,8 @@
   position: absolute;
   height: fit-content;
   right: 0;
-  bottom: 0.5%;
+  bottom: 0;
   cursor: pointer;
-  background-color: #FFFFFF;
 }
 
 .view-profile .right-section > *{
