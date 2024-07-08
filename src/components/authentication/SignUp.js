@@ -145,6 +145,7 @@ const SignUp = () => {
           <RadioField
             mainLabel="Gender"
             name="gender"
+            formikValue={ values.gender }
             className={
               errors.gender && touched.gender ? "radio-error" : ""
             }
