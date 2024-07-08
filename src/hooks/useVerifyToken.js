@@ -9,10 +9,10 @@ export const useVerifyToken = () => {
   const history = useHistory();
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    
     async function verifyToken(){
-      const controller = new AbortController();
-      const signal = controller.signal;
-
       await API.get("/token/verify", {
         withCredentials: true,
         signal: signal,

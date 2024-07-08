@@ -76,7 +76,10 @@ const EditProfilePic = forwardRef((props, ref) => {
           src={require("../../images/cross.png")}
           alt="cross.png"
           className={isSubmitting ? "icon disabled" : "icon"}
-          onClick={() => { !isSubmitting ? ref.current.classList.toggle("hide") : null }}
+          onClick={() => { if(isSubmitting){
+            ref.current.classList.toggle("hide");
+          } 
+          }}
         />
         <form
           onSubmit={handleSubmit}
