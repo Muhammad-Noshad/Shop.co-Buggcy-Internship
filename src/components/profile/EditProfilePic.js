@@ -1,7 +1,6 @@
 import "../../styles/profile/edit-profile-pic.css";
 
 import { useState, useCallback, forwardRef } from "react";
-
 import { useFormik } from "formik";
 import useUserStore from "../../hooks/userStore";
 import API from "../../hooks/useAPI";
@@ -18,7 +17,7 @@ const EditProfilePic = forwardRef((props, ref) => {
   const [message, setMessage] = useState();
   const [color, setColor] = useState();
 
-  const onSubmit = useCallback(async function ({ profilePic }){  
+  const onSubmit = useCallback(async ({ profilePic }) => {
     await API.patch("/profile/edit/profile-pic", {
       profilePic,
       email: user.email,
@@ -45,12 +44,12 @@ const EditProfilePic = forwardRef((props, ref) => {
     .catch((err) => {
       console.log("An error occurred!", err);
     });
-  }, [])
+  }, []);
 
   const handleFileChange = useCallback((e) => {
     const file = e.currentTarget.files[0];
     setFieldValue("profilePic", file);
-  }, [])
+  }, []);
 
   const { errors, handleBlur, handleSubmit, touched, isSubmitting, setFieldValue } = useFormik({
     initialValues: {
@@ -62,51 +61,54 @@ const EditProfilePic = forwardRef((props, ref) => {
 
   return (
     <>
-      {
-        display && <Message message={message} color={color}/ >
-      }
-      <div ref={ ref } className="edit-profile-pic hide">
-          <h1 style={{textAlign: "center"}}>Edit Profile Pic📝</h1>
-          <p
-            style={{
-              textAlign: "center",
-              marginBottom: "2em",
-            }}
-          >
-            Please choose a new profile picture
-          </p>
-        <img src={require("../../images/cross.png")} alt="cross.png" className={ isSubmitting ? "icon disabled" : "icon" } onClick={ () => { !isSubmitting?ref.current.classList.toggle("hide"):null } } />
-          <form 
-            onSubmit={handleSubmit}
-            autoComplete="off"
+      {display && <Message message={message} color={color} />}
+      <div ref={ref} className="edit-profile-pic hide">
+        <h1 style={{ textAlign: "center" }}>Edit Profile Pic📝</h1>
+        <p
+          style={{
+            textAlign: "center",
+            marginBottom: "2em",
+          }}
+        >
+          Please choose a new profile picture
+        </p>
+        <img
+          src={require("../../images/cross.png")}
+          alt="cross.png"
+          className={isSubmitting ? "icon disabled" : "icon"}
+          onClick={() => { !isSubmitting ? ref.current.classList.toggle("hide") : null }}
+        />
+        <form
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          className={isSubmitting ? "disabled" : ""}
+          encType="multipart/form-data">
+          <FormField
+            label="Profile Picture"
+            type="file"
+            accept="image/*"
+            id="profilePic"
+            className={
+              errors.profilePic && touched.profilePic ? "input-error" : ""
+            }
+            value={undefined}
+            onChange={handleFileChange}
+            onBlur={handleBlur}
+            error={
+              errors.profilePic && touched.profilePic
+                ? errors.profilePic
+                : false
+            }
+          />
+          <button
+            disabled={isSubmitting}
             className={isSubmitting ? "disabled" : ""}
-            encType="multipart/form-data">
-            <FormField
-              label="Profile Picture"
-              type="file"
-              accept="image/*"
-              id="profilePic"
-              className={
-                errors.profilePic && touched.profilePic ? "input-error" : ""
-              }
-              value={undefined}
-              onChange={handleFileChange}
-              onBlur={handleBlur}
-              error={
-                errors.profilePic && touched.profilePic
-                  ? errors.profilePic
-                  : false
-              }
-            />
-            <button
-              disabled={isSubmitting}
-              className={isSubmitting ? "disabled" : ""} 
-              type="submit"
-            >Submit</button>
-          </form>
+            type="submit"
+          >Submit</button>
+        </form>
       </div>
     </>
   );
-})
- 
+});
+
 export default EditProfilePic;
