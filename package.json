@@ -1,6 +1,5 @@
 {
   "name": "e-commerce-app",
-  "homepage": "https://shop-co-blond.vercel.app/sign-in",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
